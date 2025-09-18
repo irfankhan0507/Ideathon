@@ -257,54 +257,28 @@ k.m<!DOCTYPE html>
         state.active = 'all';
         applyFilters();
 
-        // populate hero slideshow with first 5-7 images
+        // populate hero tiles (mosaic) with first 12 images
         const picks = state.raw.slice(0, 12);
-        const slideshowTrack = document.getElementById('slideshowTrack');
-        const slideshowDots = document.getElementById('slideshowDots');
-        const prevBtn = document.getElementById('slideshowPrev');
-        const nextBtn = document.getElementById('slideshowNext');
-        if (slideshowTrack) {
-          const slides = picks.slice(0, 7); // use first up-to-7 images
-          slideshowTrack.innerHTML = '';
-          slideshowDots.innerHTML = '';
-          slides.forEach((s, i) => {
-            const slide = document.createElement('div');
-            slide.className = 'slide';
+        const leftTop = document.getElementById('hero-left-top');
+        const leftBottom = document.getElementById('hero-left-bottom');
+        const rightTop = document.getElementById('hero-right-top');
+        const rightBottom = document.getElementById('hero-right-bottom');
+        const centerGrid = document.getElementById('centerGrid');
+        if (leftTop && picks[0]) leftTop.querySelector('img').src = picks[0].url;
+        if (leftBottom && picks[1]) leftBottom.querySelector('img').src = picks[1].url;
+        if (rightTop && picks[2]) rightTop.querySelector('img').src = picks[2].url;
+        if (rightBottom && picks[3]) rightBottom.querySelector('img').src = picks[3].url;
+        if (centerGrid) {
+          centerGrid.innerHTML = '';
+          for (let i = 0; i < 4; i++) {
+            const idx = 4 + i;
             const img = document.createElement('img');
-            img.src = s.url; img.alt = s.alt || s.title || '';
+            img.alt = 'center-' + (i + 1);
             img.loading = 'lazy';
-            slide.appendChild(img);
-            slideshowTrack.appendChild(slide);
-
-            const dot = document.createElement('button');
-            dot.className = 'slideshow-dot' + (i === 0 ? ' is-active' : '');
-            dot.dataset.index = i;
-            slideshowDots.appendChild(dot);
-            dot.addEventListener('click', () => { goToSlide(i); resetTimer(); });
-          });
-
-          // sizing
-          const slideEls = Array.from(slideshowTrack.children);
-          slideEls.forEach(elm => { elm.style.flex = '0 0 100%'; });
-          slideshowTrack.style.width = `${slideEls.length * 100}%`;
-
-          let slideIndex = 0;
-          let timer = null;
-          function showSlide(i) { const count = slideEls.length; slideIndex = ((i % count) + count) % count; slideshowTrack.style.transform = `translateX(-${slideIndex * 100}%)`; Array.from(slideshowDots.children).forEach((d, idx) => d.classList.toggle('is-active', idx === slideIndex)); }
-          function nextSlide() { showSlide(slideIndex + 1); }
-          function prevSlide() { showSlide(slideIndex - 1); }
-          function resetTimer() { if (timer) clearInterval(timer); timer = setInterval(nextSlide, 3000); }
-          // wire controls
-          nextBtn && nextBtn.addEventListener('click', () => { nextSlide(); resetTimer(); });
-          prevBtn && prevBtn.addEventListener('click', () => { prevSlide(); resetTimer(); });
-          slideshowTrack.addEventListener('mouseenter', () => { if (timer) clearInterval(timer); });
-          slideshowTrack.addEventListener('mouseleave', () => { resetTimer(); });
-
-          // expose helpers used by dots handler
-          window.goToSlide = function(i){ showSlide(i); };
-          window.resetTimer = resetTimer;
-
-          showSlide(0); resetTimer();
+            img.style.width = '100%'; img.style.height = '100%'; img.style.objectFit = 'cover'; img.style.borderRadius = '8px';
+            if (picks[idx]) img.src = picks[idx].url;
+            centerGrid.appendChild(img);
+          }
         }
       } catch (err) { console.error(err); els.collage.innerHTML = '<p>Unable to load gallery at this time.</p>'; }
     }
