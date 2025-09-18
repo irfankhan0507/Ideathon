@@ -44,16 +44,8 @@ k.m<!DOCTYPE html>
     .hero-tile{position:relative;border-radius:14px;overflow:hidden;background:#ecf0f1;box-shadow:0 8px 28px rgba(6,18,34,0.06);display:block}
     .hero-tile img{width:100%;height:100%;object-fit:cover;display:block}
     .hero-center{position:relative;border-radius:14px;overflow:hidden}
-    .slideshow{position:relative;overflow:hidden;padding:8px 0}
-    .slideshow-track{display:flex;transition:transform 0.6s ease;width:100%}
-    .slide{flex:0 0 100%;padding:6px;box-sizing:border-box}
-    .slide img{width:100%;height:260px;object-fit:cover;border-radius:8px;display:block}
-    .slideshow-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.92);border:0;padding:8px 10px;border-radius:8px;cursor:pointer;box-shadow:0 6px 20px rgba(2,6,23,0.12)}
-    .slideshow-nav.prev{left:8px}
-    .slideshow-nav.next{right:8px}
-    .slideshow-dots{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:8px}
-    .slideshow-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.6);border:0;cursor:pointer}
-    .slideshow-dot.is-active{background:var(--accent)}
+    .mosaic-grid{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:120px;gap:8px;padding:8px}
+    .mosaic-grid img{width:100%;height:100%;object-fit:cover;border-radius:8px}
         .hero-overlay{position:absolute;left:50%;transform:translateX(-50%);top:30%;text-align:center;background:rgba(12,17,31,0.6);color:#fff;padding:18px 20px;border-radius:10px;backdrop-filter: blur(4px);width:75%}
     .cta-btn{background:var(--accent);color:var(--dark);padding:10px 14px;border-radius:999px;font-weight:700;border:none;cursor:pointer}
 
