@@ -125,18 +125,24 @@ k.m<!DOCTYPE html>
     </nav>
 
     <main>
-      <section class="hero" aria-label="hero slideshow">
-        <div style="position:relative;padding:18px 26px;">
-          <div class="slideshow" id="centerSlideshow" aria-hidden="false">
-            <div class="slideshow-track" id="slideshowTrack" aria-live="polite"></div>
-            <button class="slideshow-nav prev" id="slideshowPrev" aria-label="Previous">❮</button>
-            <button class="slideshow-nav next" id="slideshowNext" aria-label="Next">❯</button>
-            <div class="slideshow-dots" id="slideshowDots" aria-hidden="false"></div>
-          </div>
-          <div class="hero-overlay" style="pointer-events:none;">
+      <section class="hero" aria-label="hero collage">
+        <div class="hero-col">
+          <a class="hero-tile" id="hero-left-top" href="#"><img src="https://images.pexels.com/photos/1145434/pexels-photo-1145434.jpeg" alt="metalwork sparks" loading="lazy" /></a>
+          <a class="hero-tile" id="hero-left-bottom" href="#"><img src="https://images.pexels.com/photos/6890319/pexels-photo-6890319.jpeg" alt="cnc machinery" loading="lazy" /></a>
+        </div>
+
+        <div class="hero-center">
+          <div class="mosaic-grid" id="centerGrid" aria-hidden="true"></div>
+          <div class="hero-overlay">
             <h2 style="margin:0 0 8px;color:#fff">Discover Industrial Excellence</h2>
             <p style="margin:0 0 12px;color:rgba(255,255,255,0.95)">Explore our diverse industrial sectors</p>
+            <button class="cta-btn" id="browseBtn">Browse Catalog</button>
           </div>
+        </div>
+
+        <div class="hero-col">
+          <a class="hero-tile" id="hero-right-top" href="#"><img src="https://images.pexels.com/photos/236722/pexels-photo-236722.jpeg" alt="refinery" loading="lazy" /></a>
+          <a class="hero-tile" id="hero-right-bottom" href="#"><img src="https://images.pexels.com/photos/5845937/pexels-photo-5845937.jpeg" alt="forge" loading="lazy" /></a>
         </div>
       </section>
 
