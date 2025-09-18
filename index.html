@@ -139,5 +139,38 @@
         }
       }catch(err){console.error(err);el.collage.innerHTML='<p>Unable to load gallery at this time.</p>'}}document.addEventListener('DOMContentLoaded',()=>{el.buttons=Array.from(document.querySelectorAll('.filter-button'));el.buttons.forEach(btn=>btn.addEventListener('click',()=>{state.active=btn.dataset.filter;setActiveButton(state.active);applyFilters();}));el.search.addEventListener('input',(e)=>{state.q=e.target.value;applyFilters();});document.getElementById('browseBtn').addEventListener('click',()=>{window.scrollTo({top:document.querySelector('.collage-wrap').offsetTop-40,behavior:'smooth'})});boot();});
   </script>
+  <script>
+    (async function populateHeroFromGallery(){
+      try{
+        const res = await fetch('data/gallery.json', { cache: 'no-store' });
+        if(!res.ok) return;
+        const data = await res.json();
+        const picks = Array.isArray(data) ? data.slice(0,12) : [];
+
+        const leftTop = document.getElementById('hero-left-top');
+        const leftBottom = document.getElementById('hero-left-bottom');
+        const rightTop = document.getElementById('hero-right-top');
+        const rightBottom = document.getElementById('hero-right-bottom');
+        const centerGrid = document.getElementById('centerGrid');
+
+        if(picks[0] && leftTop) leftTop.querySelector('img').src = picks[0].url;
+        if(picks[1] && leftBottom) leftBottom.querySelector('img').src = picks[1].url;
+        if(picks[2] && rightTop) rightTop.querySelector('img').src = picks[2].url;
+        if(picks[3] && rightBottom) rightBottom.querySelector('img').src = picks[3].url;
+
+        if(centerGrid){
+          centerGrid.innerHTML = '';
+          for(let i=0;i<4;i++){
+            const idx = 4 + i;
+            const img = document.createElement('img');
+            img.alt = 'center-' + (i+1);
+            img.style.width = '100%'; img.style.height = '100%'; img.style.objectFit = 'cover'; img.style.borderRadius = '8px';
+            if(picks[idx]) img.src = picks[idx].url;
+            centerGrid.appendChild(img);
+          }
+        }
+      }catch(err){ console.error('hero populate error', err); }
+    })();
+  </script>
 </body>
 </html>
