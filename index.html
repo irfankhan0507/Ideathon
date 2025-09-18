@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+k.m<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -44,19 +44,8 @@
     .hero-tile{position:relative;border-radius:14px;overflow:hidden;background:#ecf0f1;box-shadow:0 8px 28px rgba(6,18,34,0.06);display:block}
     .hero-tile img{width:100%;height:100%;object-fit:cover;display:block}
     .hero-center{position:relative;border-radius:14px;overflow:hidden}
-    /* Slideshow styles (replaces mosaic center) */
-    .slideshow{position:relative;overflow:hidden;padding:8px 0}
-    .slideshow-track{display:flex;transition:transform 0.6s ease;width:100%}
-    .slide{flex:0 0 100%;padding:6px;box-sizing:border-box}
-    .slide img{width:100%;height:260px;object-fit:cover;border-radius:8px;display:block}
-    .slideshow-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.92);border:0;padding:8px 10px;border-radius:8px;cursor:pointer;box-shadow:0 6px 20px rgba(2,6,23,0.12)}
-    .slideshow-nav.prev{left:8px}
-    .slideshow-nav.next{right:8px}
-    .slideshow-dots{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:8px}
-    .slideshow-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.6);border:0;cursor:pointer}
-    .slideshow-dot.is-active{background:var(--accent)}
-
-    @media (max-width:1024px){.slide img{height:180px}}
+    .mosaic-grid{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:120px;gap:8px;padding:8px}
+    .mosaic-grid img{width:100%;height:100%;object-fit:cover;border-radius:8px}
     .hero-overlay{position:absolute;left:50%;transform:translateX(-50%);top:30%;text-align:center;background:rgba(12,17,31,0.6);color:#fff;padding:18px 20px;border-radius:10px;backdrop-filter: blur(4px);width:75%}
     .cta-btn{background:var(--accent);color:var(--dark);padding:10px 14px;border-radius:999px;font-weight:700;border:none;cursor:pointer}
 
@@ -143,12 +132,7 @@
         </div>
 
         <div class="hero-center">
-          <div class="slideshow" id="centerSlideshow" aria-hidden="false">
-            <div class="slideshow-track" id="slideshowTrack" aria-live="polite"></div>
-            <button class="slideshow-nav prev" id="slideshowPrev" aria-label="Previous">❮</button>
-            <button class="slideshow-nav next" id="slideshowNext" aria-label="Next">❯</button>
-            <div class="slideshow-dots" id="slideshowDots" aria-hidden="false"></div>
-          </div>
+          <div class="mosaic-grid" id="centerGrid" aria-hidden="true"></div>
           <div class="hero-overlay">
             <h2 style="margin:0 0 8px;color:#fff">Discover Industrial Excellence</h2>
             <p style="margin:0 0 12px;color:rgba(255,255,255,0.95)">Explore our diverse industrial sectors</p>
@@ -277,54 +261,14 @@
         const leftBottom = document.getElementById('hero-left-bottom');
         const rightTop = document.getElementById('hero-right-top');
         const rightBottom = document.getElementById('hero-right-bottom');
-        const centerSlideshow = document.getElementById('centerSlideshow');
+        const centerGrid = document.getElementById('centerGrid');
         if (leftTop && picks[0]) leftTop.querySelector('img').src = picks[0].url;
         if (leftBottom && picks[1]) leftBottom.querySelector('img').src = picks[1].url;
         if (rightTop && picks[2]) rightTop.querySelector('img').src = picks[2].url;
         if (rightBottom && picks[3]) rightBottom.querySelector('img').src = picks[3].url;
-        // Build slideshow with 5-7 images (3s interval)
-        const slideshowTrack = document.getElementById('slideshowTrack');
-        const slideshowDots = document.getElementById('slideshowDots');
-        const prevBtn = document.getElementById('slideshowPrev');
-        const nextBtn = document.getElementById('slideshowNext');
-        if (slideshowTrack) {
-          const slides = picks.slice(4, 11); // up to 7 slides
-          slideshowTrack.innerHTML = '';
-          slideshowDots.innerHTML = '';
-          slides.forEach((s, i) => {
-            const slide = document.createElement('div');
-            slide.className = 'slide';
-            const img = document.createElement('img');
-            img.src = s.url; img.alt = s.alt || s.title || '';
-            img.loading = 'lazy';
-            slide.appendChild(img);
-            slideshowTrack.appendChild(slide);
-
-            const dot = document.createElement('button');
-            dot.className = 'slideshow-dot' + (i === 0 ? ' is-active' : '');
-            dot.dataset.index = i;
-            slideshowDots.appendChild(dot);
-            dot.addEventListener('click', () => { goToSlide(i); resetTimer(); });
-          });
-
-          // sizing
-          const slideEls = Array.from(slideshowTrack.children);
-          slideEls.forEach(elm => { elm.style.flex = '0 0 100%'; });
-          slideshowTrack.style.width = `${slideEls.length * 100}%`;
-
-          let slideIndex = 0;
-          let timer = null;
-          function showSlide(i) { const count = slideEls.length; slideIndex = ((i % count) + count) % count; slideshowTrack.style.transform = `translateX(-${slideIndex * 100}%)`; Array.from(slideshowDots.children).forEach((d, idx) => d.classList.toggle('is-active', idx === slideIndex)); }
-          function nextSlide() { showSlide(slideIndex + 1); }
-          function prevSlide() { showSlide(slideIndex - 1); }
-          function resetTimer() { if (timer) clearInterval(timer); timer = setInterval(nextSlide, 3000); }
-          // wire controls
-          nextBtn && nextBtn.addEventListener('click', () => { nextSlide(); resetTimer(); });
-          prevBtn && prevBtn.addEventListener('click', () => { prevSlide(); resetTimer(); });
-          slideshowTrack.addEventListener('mouseenter', () => { if (timer) clearInterval(timer); });
-          slideshowTrack.addEventListener('mouseleave', () => { resetTimer(); });
-
-          showSlide(0); resetTimer();
+        if (centerGrid) {
+          centerGrid.innerHTML = '';
+          for (let i = 0; i < 4; i++) { const idx = 4 + i; const img = document.createElement('img'); img.alt = 'center-' + (i+1); img.loading = 'lazy'; img.style.width = '100%'; img.style.height = '100%'; img.style.objectFit = 'cover'; img.style.borderRadius = '8px'; if (picks[idx]) img.src = picks[idx].url; centerGrid.appendChild(img); }
         }
       } catch (err) { console.error(err); els.collage.innerHTML = '<p>Unable to load gallery at this time.</p>'; }
     }
