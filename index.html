@@ -172,5 +172,19 @@
       }catch(err){ console.error('hero populate error', err); }
     })();
   </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const res = await fetch('data/gallery.json', { cache: 'no-store' });
+        if (!res.ok) return;
+        const data = await res.json();
+        if (window.state && Array.isArray(data)) {
+          window.state.raw = data;
+          window.state.active = window.state.active || 'all';
+          if (typeof applyFilters === 'function') applyFilters();
+        }
+      } catch (err) { console.error('init state error', err); }
+    });
+  </script>
 </body>
 </html>
