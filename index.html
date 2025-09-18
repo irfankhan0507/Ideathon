@@ -296,12 +296,13 @@ k.m<!DOCTYPE html>
       const navLinks = document.getElementById('navLinks');
       if (hamburger) hamburger.addEventListener('click', () => { if (navLinks.style.display === 'flex') { navLinks.style.display = ''; } else { navLinks.style.display = 'flex'; navLinks.style.flexDirection = 'column'; navLinks.style.position = 'absolute'; navLinks.style.top = '64px'; navLinks.style.right = '16px'; navLinks.style.background = '#fff'; navLinks.style.padding = '12px'; navLinks.style.borderRadius = '8px'; navLinks.style.boxShadow = '0 10px 30px rgba(2,6,23,0.12)'; } });
 
-      document.getElementById('browseBtn').addEventListener('click', () => { document.getElementById('gallery').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+      const browseBtnEl = document.getElementById('browseBtn');
+      if (browseBtnEl) browseBtnEl.addEventListener('click', () => { const g = document.getElementById('gallery'); if (g) g.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
 
-      // lightbox controls
-      document.getElementById('closeBtn').addEventListener('click', closeLightbox);
-      document.getElementById('nextBtn').addEventListener('click', nextLightbox);
-      document.getElementById('prevBtn').addEventListener('click', prevLightbox);
+      // lightbox controls (guarded)
+      const closeBtnEl = document.getElementById('closeBtn'); if (closeBtnEl) closeBtnEl.addEventListener('click', closeLightbox);
+      const nextBtnEl = document.getElementById('nextBtn'); if (nextBtnEl) nextBtnEl.addEventListener('click', nextLightbox);
+      const prevBtnEl = document.getElementById('prevBtn'); if (prevBtnEl) prevBtnEl.addEventListener('click', prevLightbox);
       els.lightbox.addEventListener('click', (e) => { if (e.target === els.lightbox) closeLightbox(); });
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); if (e.key === 'ArrowRight') nextLightbox(); if (e.key === 'ArrowLeft') prevLightbox(); });
 
