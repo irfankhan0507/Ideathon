@@ -76,7 +76,7 @@
     <nav class="navbar" role="navigation" aria-label="Main navigation">
       <div class="nav-left">
         <!-- Replaced M avatar with CIA logo on the left -->
-        <img class="nav-logo-left" src="https://cdn.builder.io/api/v1/image/assets%2Fa180d3e502ea4bf0922bba9c817ddbe4%2F133ac974bb384accb80cf23796f286b5?format=webp&width=800" alt="CIA logo" />
+        <img class="nav-logo-left" src="https://cdn.builder.io/api/v1/image/assets%2Fa180d3e502ea4bf0922bba9c817ddbe4%2Fc585bdc823974cae879fef858caf1b74?format=webp&width=800" alt="CIA logo" />
         <div class="search-wrapper" aria-hidden="false">
           <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 21l-4.35-4.35" stroke="#111827" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="6" stroke="#111827" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <input id="headerSearch" placeholder="Search.." aria-label="Search" />
@@ -86,7 +86,7 @@
       <div class="nav-center">
         <!-- Keep brand title centered, no duplicate M -->
         <div class="brand">
-          <h1>CIAnext</h1>
+          <h1>CIA Next</h1>
         </div>
         <div style="margin-top:6px;color:var(--muted);font-size:0.85rem;">Discover Industrial Excellence</div>
       </div>
@@ -110,13 +110,7 @@
       </div>
 
       <div class="hero-center">
-        <div class="grid" id="centerGrid">
-          <!-- 4 small collage tiles inside center -->
-          <img src="https://images.pexels.com/photos/236722/pexels-photo-236722.jpeg" alt="c1" />
-          <img src="https://images.pexels.com/photos/5845937/pexels-photo-5845937.jpeg" alt="c2" />
-          <img src="https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg" alt="c3" />
-          <img src="https://images.pexels.com/photos/19319639/pexels-photo-19319639.jpeg" alt="c4" />
-        </div>
+        <div class="grid" id="centerGrid" aria-hidden="true"></div>
         <div class="hero-overlay"><h2>Discover Industrial Excellence</h2><p>Explore our diverse industrial sectors</p><button class="btn-primary" id="browseBtn">Browse Catalog</button></div>
       </div>
 
@@ -140,8 +134,8 @@
   <script>
     const state={raw:[],view:[],active:'all',q:''};const el={collage:document.getElementById('collage'),counter:document.getElementById('counter'),search:document.getElementById('searchInput'),buttons:[]};
     function fmtDate(iso){const d=new Date(iso);return d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'2-digit'});}function render(){el.collage.innerHTML=state.view.map(item=>`\n        <figure class="tile-card" data-id="${item.id}">\n          <img class="tile-media" loading="lazy" src="${item.url}" alt="${item.alt}" />\n          <figcaption class="tile-overlay">\n            <div>\n              <p class="tile-title">${item.title}</p>\n              <p class="tile-meta">${fmtDate(item.date)} • ⭐ ${item.rating.toFixed(1)}</p>\n            </div>\n            <div class="tile-meta">${item.tags.slice(0,3).join(', ')}</div>\n          </figcaption>\n        </figure>\n      `).join('');el.counter.textContent=`${state.view.length} items`;}function applyFilters(){const q=state.q.trim().toLowerCase();let list=[...state.raw];if(q){list=list.filter(x=>x.title.toLowerCase().includes(q)||x.tags.some(t=>t.toLowerCase().includes(q)));}if(state.active==='recent'){list.sort((a,b)=>new Date(b.date)-new Date(a.date));}else if(state.active==='best'){list=list.filter(x=>x.rating>=4.5).sort((a,b)=>b.rating-a.rating||new Date(b.date)-new Date(a.date));}else{list.sort((a,b)=>new Date(b.date)-new Date(a.date));}state.view=list;render();}function setActiveButton(key){el.buttons.forEach(btn=>btn.classList.toggle('is-active',btn.dataset.filter===key));}async function boot(){try{const res=await fetch('data/gallery.json',{cache:'no-store'});if(!res.ok)throw new Error('Failed to fetch');const data=await res.json();state.raw=Array.isArray(data)?data:[];state.active='all';applyFilters();const leftTop=document.getElementById('hero-left-top');const leftBottom=document.getElementById('hero-left-bottom');const rightTop=document.getElementById('hero-right-top');const rightBottom=document.getElementById('hero-right-bottom');const centerGrid=document.getElementById('centerGrid');if(state.raw.length){const picks=state.raw.slice(0,12);if(picks[0])leftTop.querySelector('img').src=picks[0].url;if(picks[1])leftBottom.querySelector('img').src=picks[1].url;if(picks[2])rightTop.querySelector('img').src=picks[2].url;if(picks[3])rightBottom.querySelector('img').src=picks[3].url; // fill center grid up to 4
-          const centerImgs = centerGrid.querySelectorAll('img');
-          for(let i=0;i<centerImgs.length;i++){ if(picks[4+i]) centerImgs[i].src = picks[4+i].url; }
+          centerGrid.innerHTML = '';
+          for(let i=0;i<4;i++){ const idx = 4 + i; const img = document.createElement('img'); img.alt = 'c' + (i+1); img.style.width = '100%'; img.style.height = '100%'; img.style.objectFit = 'cover'; img.style.borderRadius = '8px'; if(picks[idx]) img.src = picks[idx].url; centerGrid.appendChild(img); }
         }
       }catch(err){console.error(err);el.collage.innerHTML='<p>Unable to load gallery at this time.</p>'}}document.addEventListener('DOMContentLoaded',()=>{el.buttons=Array.from(document.querySelectorAll('.filter-button'));el.buttons.forEach(btn=>btn.addEventListener('click',()=>{state.active=btn.dataset.filter;setActiveButton(state.active);applyFilters();}));el.search.addEventListener('input',(e)=>{state.q=e.target.value;applyFilters();});document.getElementById('browseBtn').addEventListener('click',()=>{window.scrollTo({top:document.querySelector('.collage-wrap').offsetTop-40,behavior:'smooth'})});boot();});
   </script>
