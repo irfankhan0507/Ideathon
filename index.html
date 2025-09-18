@@ -16,17 +16,17 @@
 
     .site-wrap{width:100%;max-width:1280px;background:#fff;border-radius:14px;box-shadow:0 20px 50px rgba(8,30,63,0.18);overflow:hidden}
 
-    /* NAVBAR - designed to match screenshot exactly */
+    /* NAVBAR - match screenshot */
     .navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;background:var(--nav-bg);border-bottom-left-radius:12px;border-bottom-right-radius:12px;box-shadow:0 6px 20px rgba(2,6,23,0.08);gap:12px}
 
     .nav-left{display:flex;align-items:center;gap:12px;min-width:240px}
-    .avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#ffd27a,#ffb84d);display:grid;place-items:center;font-weight:700;color:#0b1220}
+    .nav-logo-left{width:44px;height:44px;border-radius:8px;object-fit:contain}
 
-    .search-wrapper{display:flex;align-items:center;background:#f4f6fa;border-radius:28px;padding:8px 12px;gap:8px;border:1px solid #eef4fb}
+    .search-wrapper{display:flex;align-items:center;background:#f4f6fa;border-radius:28px;padding:8px 12px;gap:8px;border:1px solid #eef4fb;flex:1}
     .search-wrapper input{border:0;background:transparent;outline:none;font-size:0.95rem;color:#222;min-width:160px}
     .search-icon{width:18px;height:18px;opacity:0.7}
 
-    .nav-center{display:flex;flex-direction:column;align-items:center;flex:1}
+    .nav-center{display:flex;flex-direction:column;align-items:center;flex:0 1 auto}
     .brand{display:flex;align-items:center;gap:10px}
     .brand img{height:42px;width:auto;border-radius:6px}
     .brand h1{margin:0;font-size:1.1rem;color:#1f2937;font-weight:700}
@@ -38,14 +38,15 @@
 
     .lang-pill{border-radius:999px;border:1px solid #eef2f7;padding:8px 10px;background:linear-gradient(180deg,#fff,#fafcff);font-weight:600}
 
-    /* Hero and rest preserved but slightly tuned */
-    .hero{display:flex;gap:18px;padding:18px 26px;align-items:stretch}
-    .hero-col{display:flex;gap:18px;flex-direction:column;width:33.333%}
-    .hero-tile{position:relative;border-radius:14px;overflow:hidden;background:#ecf0f1;box-shadow:0 8px 28px rgba(6,18,34,0.06);flex:1}
+    /* Hero collage redesigned as grid to feel like a mosaic */
+    .hero{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:18px;padding:18px 26px;align-items:stretch}
+    .hero-col{display:flex;gap:18px;flex-direction:column}
+    .hero-tile{position:relative;border-radius:14px;overflow:hidden;background:#ecf0f1;box-shadow:0 8px 28px rgba(6,18,34,0.06);display:block}
     .hero-tile img{width:100%;height:100%;object-fit:cover;display:block}
-    .hero-center{width:34%;display:grid;place-items:center;position:relative}
-    .hero-bg{width:100%;height:100%;border-radius:14px;overflow:hidden}
-    .hero-overlay{position:absolute;left:0;right:0;top:28%;margin:auto;text-align:center;background:rgba(12,17,31,0.6);color:#fff;padding:22px 24px;border-radius:10px;backdrop-filter: blur(4px);width:70%}
+    .hero-center{position:relative;border-radius:14px;overflow:hidden}
+    .hero-center .grid{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:120px;gap:6px}
+    .hero-center .grid img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+    .hero-overlay{position:absolute;left:50%;transform:translateX(-50%);top:30%;text-align:center;background:rgba(12,17,31,0.6);color:#fff;padding:22px 24px;border-radius:10px;backdrop-filter: blur(4px);width:68%}
     .btn-primary{background:var(--accent);color:#0b1220;padding:10px 16px;border-radius:999px;font-weight:700;border:none;cursor:pointer}
 
     .browse-wrap{text-align:center;padding:16px 26px}
@@ -67,14 +68,15 @@
     .counter-pill{background:#f1f5f9;color:#2c3e50;padding:8px 12px;border-radius:999px;font-weight:600;border:1px solid #e6eef8}
 
     @media (max-width:1024px){.collage{column-count:2}.nav-center{display:none}.nav-left{min-width:140px}}
-    @media (max-width:740px){.hero{flex-direction:column;padding:12px}.hero-col,.hero-center{width:100%}.collage{column-count:1}.search-wrapper input{min-width:80px}}
+    @media (max-width:740px){.hero{grid-template-columns:1fr;padding:12px}.collage{column-count:1}.search-wrapper input{min-width:80px}}
   </style>
 </head>
 <body>
   <div class="site-wrap">
     <nav class="navbar" role="navigation" aria-label="Main navigation">
       <div class="nav-left">
-        <div class="avatar">M</div>
+        <!-- Replaced M avatar with CIA logo on the left -->
+        <img class="nav-logo-left" src="https://cdn.builder.io/api/v1/image/assets%2Fa180d3e502ea4bf0922bba9c817ddbe4%2F133ac974bb384accb80cf23796f286b5?format=webp&width=800" alt="CIA logo" />
         <div class="search-wrapper" aria-hidden="false">
           <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 21l-4.35-4.35" stroke="#111827" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="6" stroke="#111827" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <input id="headerSearch" placeholder="Search.." aria-label="Search" />
@@ -82,8 +84,8 @@
       </div>
 
       <div class="nav-center">
+        <!-- Keep brand title centered, no duplicate M -->
         <div class="brand">
-          <img src="https://cdn.builder.io/api/v1/image/assets%2Fa180d3e502ea4bf0922bba9c817ddbe4%2F133ac974bb384accb80cf23796f286b5?format=webp&width=800" alt="CIAnext"/>
           <h1>CIAnext</h1>
         </div>
         <div style="margin-top:6px;color:var(--muted);font-size:0.85rem;">Discover Industrial Excellence</div>
@@ -100,16 +102,24 @@
       </div>
     </nav>
 
-    <!-- Hero + rest of page (kept from previous content) -->
+    <!-- Hero redesigned as mosaic collage using grid center with 4 inner tiles -->
     <section class="hero" aria-label="hero collage">
       <div class="hero-col">
         <a class="hero-tile" id="hero-left-top" href="#"><img src="https://images.pexels.com/photos/1145434/pexels-photo-1145434.jpeg" alt="left top" /></a>
         <a class="hero-tile" id="hero-left-bottom" href="#"><img src="https://images.pexels.com/photos/6890319/pexels-photo-6890319.jpeg" alt="left bottom" /></a>
       </div>
+
       <div class="hero-center">
-        <div class="hero-bg"><img src="https://cdn.builder.io/api/v1/image/assets%2Fa180d3e502ea4bf0922bba9c817ddbe4%2F3d30455ac3814ec9982ebf034d370432?format=webp&width=1600" alt="hero" style="width:100%;height:100%;object-fit:cover;display:block"/></div>
+        <div class="grid" id="centerGrid">
+          <!-- 4 small collage tiles inside center -->
+          <img src="https://images.pexels.com/photos/236722/pexels-photo-236722.jpeg" alt="c1" />
+          <img src="https://images.pexels.com/photos/5845937/pexels-photo-5845937.jpeg" alt="c2" />
+          <img src="https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg" alt="c3" />
+          <img src="https://images.pexels.com/photos/19319639/pexels-photo-19319639.jpeg" alt="c4" />
+        </div>
         <div class="hero-overlay"><h2>Discover Industrial Excellence</h2><p>Explore our diverse industrial sectors</p><button class="btn-primary" id="browseBtn">Browse Catalog</button></div>
       </div>
+
       <div class="hero-col">
         <a class="hero-tile" id="hero-right-top" href="#"><img src="https://images.pexels.com/photos/236722/pexels-photo-236722.jpeg" alt="right top" /></a>
         <a class="hero-tile" id="hero-right-bottom" href="#"><img src="https://images.pexels.com/photos/5845937/pexels-photo-5845937.jpeg" alt="right bottom" /></a>
@@ -120,14 +130,20 @@
 
     <div class="filter-strip"><div class="filters"><button class="filter-button is-active" data-filter="all">All</button><button class="filter-button" data-filter="recent">Recent</button><button class="filter-button" data-filter="best">Best</button></div><input type="search" class="search-field" id="searchInput" placeholder="Search tags (e.g. refinery, robots)" /></div>
 
-    <section class="collage-wrap"><div id="collage" class="collage" aria-live="polite"></div></section>
+    <section class="collage-wrap">
+      <div id="collage" class="collage" aria-live="polite"></div>
+    </section>
 
     <div class="footer-bar"><span id="counter" class="counter-pill">0 items</span><span>Auto-fetched from curated industrial sources</span></div>
   </div>
 
   <script>
     const state={raw:[],view:[],active:'all',q:''};const el={collage:document.getElementById('collage'),counter:document.getElementById('counter'),search:document.getElementById('searchInput'),buttons:[]};
-    function fmtDate(iso){const d=new Date(iso);return d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'2-digit'});}function render(){el.collage.innerHTML=state.view.map(item=>`\n        <figure class="tile-card" data-id="${item.id}">\n          <img class="tile-media" loading="lazy" src="${item.url}" alt="${item.alt}" />\n          <figcaption class="tile-overlay">\n            <div>\n              <p class="tile-title">${item.title}</p>\n              <p class="tile-meta">${fmtDate(item.date)} • ⭐ ${item.rating.toFixed(1)}</p>\n            </div>\n            <div class="tile-meta">${item.tags.slice(0,3).join(', ')}</div>\n          </figcaption>\n        </figure>\n      `).join('');el.counter.textContent=`${state.view.length} items`;}function applyFilters(){const q=state.q.trim().toLowerCase();let list=[...state.raw];if(q){list=list.filter(x=>x.title.toLowerCase().includes(q)||x.tags.some(t=>t.toLowerCase().includes(q)));}if(state.active==='recent'){list.sort((a,b)=>new Date(b.date)-new Date(a.date));}else if(state.active==='best'){list=list.filter(x=>x.rating>=4.5).sort((a,b)=>b.rating-a.rating||new Date(b.date)-new Date(a.date));}else{list.sort((a,b)=>new Date(b.date)-new Date(a.date));}state.view=list;render();}function setActiveButton(key){el.buttons.forEach(btn=>btn.classList.toggle('is-active',btn.dataset.filter===key));}async function boot(){try{const res=await fetch('data/gallery.json',{cache:'no-store'});if(!res.ok)throw new Error('Failed to fetch');const data=await res.json();state.raw=Array.isArray(data)?data:[];state.active='all';applyFilters();const leftTop=document.getElementById('hero-left-top');const leftBottom=document.getElementById('hero-left-bottom');const rightTop=document.getElementById('hero-right-top');const rightBottom=document.getElementById('hero-right-bottom');if(state.raw.length){const picks=state.raw.slice(0,6);if(picks[0])leftTop.querySelector('img').src=picks[0].url;if(picks[1])leftBottom.querySelector('img').src=picks[1].url;if(picks[2])rightTop.querySelector('img').src=picks[2].url;if(picks[3])rightBottom.querySelector('img').src=picks[3].url;}}catch(err){console.error(err);el.collage.innerHTML='<p>Unable to load gallery at this time.</p>'}}document.addEventListener('DOMContentLoaded',()=>{el.buttons=Array.from(document.querySelectorAll('.filter-button'));el.buttons.forEach(btn=>btn.addEventListener('click',()=>{state.active=btn.dataset.filter;setActiveButton(state.active);applyFilters();}));el.search.addEventListener('input',(e)=>{state.q=e.target.value;applyFilters();});document.getElementById('browseBtn').addEventListener('click',()=>{window.scrollTo({top:document.querySelector('.collage-wrap').offsetTop-40,behavior:'smooth'})});boot();});
+    function fmtDate(iso){const d=new Date(iso);return d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'2-digit'});}function render(){el.collage.innerHTML=state.view.map(item=>`\n        <figure class="tile-card" data-id="${item.id}">\n          <img class="tile-media" loading="lazy" src="${item.url}" alt="${item.alt}" />\n          <figcaption class="tile-overlay">\n            <div>\n              <p class="tile-title">${item.title}</p>\n              <p class="tile-meta">${fmtDate(item.date)} • ⭐ ${item.rating.toFixed(1)}</p>\n            </div>\n            <div class="tile-meta">${item.tags.slice(0,3).join(', ')}</div>\n          </figcaption>\n        </figure>\n      `).join('');el.counter.textContent=`${state.view.length} items`;}function applyFilters(){const q=state.q.trim().toLowerCase();let list=[...state.raw];if(q){list=list.filter(x=>x.title.toLowerCase().includes(q)||x.tags.some(t=>t.toLowerCase().includes(q)));}if(state.active==='recent'){list.sort((a,b)=>new Date(b.date)-new Date(a.date));}else if(state.active==='best'){list=list.filter(x=>x.rating>=4.5).sort((a,b)=>b.rating-a.rating||new Date(b.date)-new Date(a.date));}else{list.sort((a,b)=>new Date(b.date)-new Date(a.date));}state.view=list;render();}function setActiveButton(key){el.buttons.forEach(btn=>btn.classList.toggle('is-active',btn.dataset.filter===key));}async function boot(){try{const res=await fetch('data/gallery.json',{cache:'no-store'});if(!res.ok)throw new Error('Failed to fetch');const data=await res.json();state.raw=Array.isArray(data)?data:[];state.active='all';applyFilters();const leftTop=document.getElementById('hero-left-top');const leftBottom=document.getElementById('hero-left-bottom');const rightTop=document.getElementById('hero-right-top');const rightBottom=document.getElementById('hero-right-bottom');const centerGrid=document.getElementById('centerGrid');if(state.raw.length){const picks=state.raw.slice(0,12);if(picks[0])leftTop.querySelector('img').src=picks[0].url;if(picks[1])leftBottom.querySelector('img').src=picks[1].url;if(picks[2])rightTop.querySelector('img').src=picks[2].url;if(picks[3])rightBottom.querySelector('img').src=picks[3].url; // fill center grid up to 4
+          const centerImgs = centerGrid.querySelectorAll('img');
+          for(let i=0;i<centerImgs.length;i++){ if(picks[4+i]) centerImgs[i].src = picks[4+i].url; }
+        }
+      }catch(err){console.error(err);el.collage.innerHTML='<p>Unable to load gallery at this time.</p>'}}document.addEventListener('DOMContentLoaded',()=>{el.buttons=Array.from(document.querySelectorAll('.filter-button'));el.buttons.forEach(btn=>btn.addEventListener('click',()=>{state.active=btn.dataset.filter;setActiveButton(state.active);applyFilters();}));el.search.addEventListener('input',(e)=>{state.q=e.target.value;applyFilters();});document.getElementById('browseBtn').addEventListener('click',()=>{window.scrollTo({top:document.querySelector('.collage-wrap').offsetTop-40,behavior:'smooth'})});boot();});
   </script>
 </body>
 </html>
