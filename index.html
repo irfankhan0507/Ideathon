@@ -3,201 +3,131 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Industrial Collage Gallery</title>
+  <title>CIAnext — Industrial Collage Gallery</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <style>
-    /* Base shell preserved */
-    body { font-family: 'Poppins', sans-serif; background-color: #1967db; color: #333; margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
-    .site-wrap { background: #fff; width: 100%; max-width: 1200px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); overflow: hidden; }
+    :root{
+      --brand-blue:#1967db;
+      --nav-bg:#ffffff;
+      --muted:#7f8c8d;
+      --accent:#f5b21a;
+    }
+    body{font-family:'Poppins',sans-serif;background:var(--brand-blue);margin:0;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:28px;}
 
-    /* Header */
-    .top-nav { display:flex; align-items:center; justify-content:space-between; padding:18px 26px; gap:12px; }
-    .brand { display:flex; align-items:center; gap:14px; }
-    .brand-mark { width:46px; height:46px; border-radius:12px; background: linear-gradient(135deg,#2c3e50,#95a5a6); color:#fff; display:grid; place-items:center; font-weight:700; }
-    .brand-title { margin:0; font-size:1.25rem; font-weight:700; color:#2c3e50; }
-    .brand-sub { margin:0; font-size:0.85rem; color:#7f8c8d; }
-    .nav-actions { display:flex; gap:12px; align-items:center; }
-    .search-field { padding:10px 14px; border-radius:999px; border:1px solid #e6eef8; min-width:220px; }
-    .nav-link { background:#f7f9fb; padding:10px 14px; border-radius:12px; border:1px solid #e1e5ea; font-weight:600; cursor:pointer; }
+    .site-wrap{width:100%;max-width:1280px;background:#fff;border-radius:14px;box-shadow:0 20px 50px rgba(8,30,63,0.18);overflow:hidden}
 
-    /* Hero carousel-like collage */
-    .hero { display:flex; gap:18px; padding:18px 26px; align-items:stretch; }
-    .hero-col { display:flex; gap:18px; flex-direction:column; width:33.333%; }
-    .hero-tile { position:relative; border-radius:14px; overflow:hidden; background:#ecf0f1; box-shadow:0 8px 22px rgba(0,0,0,0.08); flex:1; display:block; }
-    .hero-tile img { width:100%; height:100%; object-fit:cover; display:block; }
+    /* NAVBAR - designed to match screenshot exactly */
+    .navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;background:var(--nav-bg);border-bottom-left-radius:12px;border-bottom-right-radius:12px;box-shadow:0 6px 20px rgba(2,6,23,0.08);gap:12px}
 
-    .hero-center { width:34%; display:grid; place-items:center; position:relative; }
-    .hero-center .hero-bg { width:100%; height:100%; border-radius:14px; overflow:hidden; box-shadow:0 10px 28px rgba(0,0,0,0.12); }
-    .hero-overlay { position:absolute; left:0; right:0; top:28%; margin:auto; text-align:center; background:rgba(12,17,31,0.6); color:#fff; padding:22px 24px; border-radius:10px; backdrop-filter: blur(4px); width:70%; }
-    .hero-overlay h2 { margin:0 0 8px; font-size:1.25rem; }
-    .hero-overlay p { margin:0 0 12px; opacity:0.95; }
-    .btn-primary { background:#f5b21a; color:#0b1220; padding:10px 16px; border-radius:999px; font-weight:700; border:none; cursor:pointer; }
+    .nav-left{display:flex;align-items:center;gap:12px;min-width:240px}
+    .avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#ffd27a,#ffb84d);display:grid;place-items:center;font-weight:700;color:#0b1220}
 
-    /* Carousel dots */
-    .dots { display:flex; gap:8px; justify-content:center; margin-top:12px; }
-    .dot { width:10px; height:10px; border-radius:50%; background:#e6eef8; }
-    .dot.is-active { background:#3498db; }
+    .search-wrapper{display:flex;align-items:center;background:#f4f6fa;border-radius:28px;padding:8px 12px;gap:8px;border:1px solid #eef4fb}
+    .search-wrapper input{border:0;background:transparent;outline:none;font-size:0.95rem;color:#222;min-width:160px}
+    .search-icon{width:18px;height:18px;opacity:0.7}
 
-    /* Browse title and announcement */
-    .browse-wrap { padding:22px 26px 8px; text-align:center; }
-    .browse-title { font-size:1.5rem; margin:8px 0; color:#2c3e50; }
-    .browse-sub { color:#7f8c8d; margin:0 0 12px; }
-    .announcement { position:relative; display:inline-flex; gap:10px; align-items:center; padding:10px 14px; border-radius:999px; background:linear-gradient(180deg,#fff,#f7fbff); border:1px solid #f0e6f2; box-shadow:0 6px 18px rgba(0,0,0,0.04); }
+    .nav-center{display:flex;flex-direction:column;align-items:center;flex:1}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand img{height:42px;width:auto;border-radius:6px}
+    .brand h1{margin:0;font-size:1.1rem;color:#1f2937;font-weight:700}
 
-    /* Collage section preserved below hero */
-    .collage-wrap { padding:10px 26px 28px; }
-    .collage { column-count:3; column-gap:18px; }
-    .tile-card { display:inline-block; width:100%; margin:0 0 18px; border-radius:16px; overflow:hidden; background:#ecf0f1; position:relative; box-shadow:0 6px 16px rgba(0,0,0,0.08); break-inside:avoid; }
-    .tile-media { width:100%; display:block; }
-    .tile-overlay { position:absolute; left:0; right:0; bottom:0; background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); color:#fff; padding:14px; display:flex; align-items:center; justify-content:space-between; gap:10px; }
-    .tile-title { font-size:0.95rem; font-weight:700; margin:0; }
-    .tile-meta { font-size:0.8rem; opacity:0.9; }
+    .nav-right{display:flex;align-items:center;gap:14px}
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{color:#222;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:8px}
+    .nav-links a:hover{background:#f4f6fa}
 
-    .footer-bar { padding:12px 26px 22px; color:#7f8c8d; font-size:0.9rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; }
-    .counter-pill { background:#f1f5f9; color:#2c3e50; padding:8px 12px; border-radius:999px; font-weight:600; border:1px solid #e1e5ea; }
+    .lang-pill{border-radius:999px;border:1px solid #eef2f7;padding:8px 10px;background:linear-gradient(180deg,#fff,#fafcff);font-weight:600}
 
-    @media (max-width:1024px) { .hero-col{width:33.33%} .collage { column-count:2; } }
-    @media (max-width:740px) { .hero{flex-direction:column; padding:16px; } .hero-col, .hero-center { width:100%; } .collage { column-count:1; } .hero-overlay { width:86%; top:30%; } .search-field{min-width:120px;} }
+    /* Hero and rest preserved but slightly tuned */
+    .hero{display:flex;gap:18px;padding:18px 26px;align-items:stretch}
+    .hero-col{display:flex;gap:18px;flex-direction:column;width:33.333%}
+    .hero-tile{position:relative;border-radius:14px;overflow:hidden;background:#ecf0f1;box-shadow:0 8px 28px rgba(6,18,34,0.06);flex:1}
+    .hero-tile img{width:100%;height:100%;object-fit:cover;display:block}
+    .hero-center{width:34%;display:grid;place-items:center;position:relative}
+    .hero-bg{width:100%;height:100%;border-radius:14px;overflow:hidden}
+    .hero-overlay{position:absolute;left:0;right:0;top:28%;margin:auto;text-align:center;background:rgba(12,17,31,0.6);color:#fff;padding:22px 24px;border-radius:10px;backdrop-filter: blur(4px);width:70%}
+    .btn-primary{background:var(--accent);color:#0b1220;padding:10px 16px;border-radius:999px;font-weight:700;border:none;cursor:pointer}
+
+    .browse-wrap{text-align:center;padding:16px 26px}
+    .browse-title{font-size:1.5rem;margin:6px 0;color:#2c3e50}
+    .browse-sub{color:var(--muted);margin:0 0 12px}
+
+    .filter-strip{display:flex;align-items:center;justify-content:space-between;padding:12px 26px}
+    .filters{display:flex;gap:10px}
+    .filter-button{padding:10px 14px;border-radius:10px;background:#f7f9fb;border:1px solid #e7eef8;font-weight:700;cursor:pointer}
+    .filter-button.is-active{background:#fff;color:var(--brand-blue);border-color:rgba(52,152,219,0.15);box-shadow:0 6px 18px rgba(52,152,219,0.06)}
+
+    .collage-wrap{padding:10px 26px 26px}
+    .collage{column-count:3;column-gap:18px}
+    .tile-card{display:inline-block;width:100%;margin:0 0 18px;border-radius:12px;overflow:hidden;background:#ecf0f1;position:relative;box-shadow:0 6px 16px rgba(0,0,0,0.06);break-inside:avoid}
+    .tile-media{width:100%;display:block}
+    .tile-overlay{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%);color:#fff;padding:12px;display:flex;align-items:center;justify-content:space-between}
+
+    .footer-bar{padding:12px 26px 20px;color:var(--muted);font-size:0.95rem;display:flex;align-items:center;justify-content:space-between}
+    .counter-pill{background:#f1f5f9;color:#2c3e50;padding:8px 12px;border-radius:999px;font-weight:600;border:1px solid #e6eef8}
+
+    @media (max-width:1024px){.collage{column-count:2}.nav-center{display:none}.nav-left{min-width:140px}}
+    @media (max-width:740px){.hero{flex-direction:column;padding:12px}.hero-col,.hero-center{width:100%}.collage{column-count:1}.search-wrapper input{min-width:80px}}
   </style>
 </head>
 <body>
-  <main class="site-wrap">
-    <header class="top-nav">
-      <div class="brand">
-        <div class="brand-mark">IN</div>
-        <div>
-          <div class="brand-title">CIAnext</div>
-          <div class="brand-sub">Discover Industrial Excellence</div>
+  <div class="site-wrap">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <div class="nav-left">
+        <div class="avatar">M</div>
+        <div class="search-wrapper" aria-hidden="false">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 21l-4.35-4.35" stroke="#111827" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="6" stroke="#111827" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <input id="headerSearch" placeholder="Search.." aria-label="Search" />
         </div>
       </div>
-      <div class="nav-actions">
-        <input class="search-field" id="headerSearch" placeholder="Search catalog..." />
-        <div class="nav-link">Home</div>
-        <div class="nav-link">About</div>
-        <div class="nav-link">Category</div>
-      </div>
-    </header>
 
-    <!-- Hero collage inspired by provided screenshot -->
+      <div class="nav-center">
+        <div class="brand">
+          <img src="https://cdn.builder.io/api/v1/image/assets%2Fa180d3e502ea4bf0922bba9c817ddbe4%2F133ac974bb384accb80cf23796f286b5?format=webp&width=800" alt="CIAnext"/>
+          <h1>CIAnext</h1>
+        </div>
+        <div style="margin-top:6px;color:var(--muted);font-size:0.85rem;">Discover Industrial Excellence</div>
+      </div>
+
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="#">Home</a>
+          <a href="#">About Us</a>
+          <a href="#">Category</a>
+          <a href="#">Suppliers</a>
+        </div>
+        <div class="lang-pill">EN</div>
+      </div>
+    </nav>
+
+    <!-- Hero + rest of page (kept from previous content) -->
     <section class="hero" aria-label="hero collage">
       <div class="hero-col">
-        <a class="hero-tile" id="hero-left-top" href="#">
-          <img src="https://images.pexels.com/photos/1145434/pexels-photo-1145434.jpeg" alt="left top" />
-        </a>
-        <a class="hero-tile" id="hero-left-bottom" href="#">
-          <img src="https://images.pexels.com/photos/6890319/pexels-photo-6890319.jpeg" alt="left bottom" />
-        </a>
+        <a class="hero-tile" id="hero-left-top" href="#"><img src="https://images.pexels.com/photos/1145434/pexels-photo-1145434.jpeg" alt="left top" /></a>
+        <a class="hero-tile" id="hero-left-bottom" href="#"><img src="https://images.pexels.com/photos/6890319/pexels-photo-6890319.jpeg" alt="left bottom" /></a>
       </div>
-
       <div class="hero-center">
-        <div class="hero-bg">
-          <!-- Use the attached image as main hero visual -->
-          <img src="https://cdn.builder.io/api/v1/image/assets%2Fa180d3e502ea4bf0922bba9c817ddbe4%2F3d30455ac3814ec9982ebf034d370432?format=webp&width=1600" alt="hero" style="width:100%;height:100%;object-fit:cover;display:block" />
-        </div>
-        <div class="hero-overlay">
-          <h2>Discover Industrial Excellence</h2>
-          <p>Explore our diverse industrial sectors</p>
-          <button class="btn-primary" id="browseBtn">Browse Catalog</button>
-        </div>
-        <div style="position:absolute;left:0;right:0;bottom:-36px;display:flex;justify-content:center;">
-          <div class="dots" id="heroDots">
-            <div class="dot is-active"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-          </div>
-        </div>
+        <div class="hero-bg"><img src="https://cdn.builder.io/api/v1/image/assets%2Fa180d3e502ea4bf0922bba9c817ddbe4%2F3d30455ac3814ec9982ebf034d370432?format=webp&width=1600" alt="hero" style="width:100%;height:100%;object-fit:cover;display:block"/></div>
+        <div class="hero-overlay"><h2>Discover Industrial Excellence</h2><p>Explore our diverse industrial sectors</p><button class="btn-primary" id="browseBtn">Browse Catalog</button></div>
       </div>
-
       <div class="hero-col">
-        <a class="hero-tile" id="hero-right-top" href="#">
-          <img src="https://images.pexels.com/photos/236722/pexels-photo-236722.jpeg" alt="right top" />
-        </a>
-        <a class="hero-tile" id="hero-right-bottom" href="#">
-          <img src="https://images.pexels.com/photos/5845937/pexels-photo-5845937.jpeg" alt="right bottom" />
-        </a>
+        <a class="hero-tile" id="hero-right-top" href="#"><img src="https://images.pexels.com/photos/236722/pexels-photo-236722.jpeg" alt="right top" /></a>
+        <a class="hero-tile" id="hero-right-bottom" href="#"><img src="https://images.pexels.com/photos/5845937/pexels-photo-5845937.jpeg" alt="right bottom" /></a>
       </div>
     </section>
 
-    <div class="browse-wrap">
-      <div style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;">
-        <h3 class="browse-title">Browse Industrial Categories</h3>
-        <div class="announcement">🔔 Announcement</div>
-      </div>
-      <p class="browse-sub">Explore our diverse manufacturing and industrial sectors</p>
-    </div>
+    <div class="browse-wrap"><div style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;"><h3 class="browse-title">Browse Industrial Categories</h3><div class="announcement">🔔 Announcement</div></div><p class="browse-sub">Explore our diverse manufacturing and industrial sectors</p></div>
 
-    <!-- Existing filter toolbar + collage -->
-    <header style="padding:10px 26px 0;display:flex;align-items:center;justify-content:space-between;gap:12px;">
-      <div style="display:flex;gap:10px;align-items:center;">
-        <button class="filter-button is-active" data-filter="all">All</button>
-        <button class="filter-button" data-filter="recent">Recent</button>
-        <button class="filter-button" data-filter="best">Best</button>
-      </div>
-      <input type="search" class="search-field" id="searchInput" placeholder="Search tags (e.g. refinery, robots)" />
-    </header>
+    <div class="filter-strip"><div class="filters"><button class="filter-button is-active" data-filter="all">All</button><button class="filter-button" data-filter="recent">Recent</button><button class="filter-button" data-filter="best">Best</button></div><input type="search" class="search-field" id="searchInput" placeholder="Search tags (e.g. refinery, robots)" /></div>
 
-    <section class="collage-wrap">
-      <div id="collage" class="collage" aria-live="polite"></div>
-    </section>
+    <section class="collage-wrap"><div id="collage" class="collage" aria-live="polite"></div></section>
 
-    <div class="footer-bar">
-      <span id="counter" class="counter-pill">0 items</span>
-      <span>Auto-fetched from curated industrial sources</span>
-    </div>
-  </main>
+    <div class="footer-bar"><span id="counter" class="counter-pill">0 items</span><span>Auto-fetched from curated industrial sources</span></div>
+  </div>
 
   <script>
-    const state = { raw: [], view: [], active: 'all', q: '' };
-    const el = { collage: document.getElementById('collage'), counter: document.getElementById('counter'), search: document.getElementById('searchInput'), buttons: [] };
-
-    function fmtDate(iso) { const d = new Date(iso); return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: '2-digit' }); }
-    function render() {
-      el.collage.innerHTML = state.view.map(item => `\n        <figure class="tile-card" data-id="${item.id}">\n          <img class="tile-media" loading="lazy" src="${item.url}" alt="${item.alt}" />\n          <figcaption class="tile-overlay">\n            <div>\n              <p class="tile-title">${item.title}</p>\n              <p class="tile-meta">${fmtDate(item.date)} • ⭐ ${item.rating.toFixed(1)}</p>\n            </div>\n            <div class="tile-meta">${item.tags.slice(0,3).join(', ')}</div>\n          </figcaption>\n        </figure>\n      `).join('');
-      el.counter.textContent = `${state.view.length} items`;
-    }
-
-    function applyFilters() {
-      const q = state.q.trim().toLowerCase();
-      let list = [...state.raw];
-      if (q) { list = list.filter(x => x.title.toLowerCase().includes(q) || x.tags.some(t => t.toLowerCase().includes(q))); }
-      if (state.active === 'recent') { list.sort((a,b) => new Date(b.date) - new Date(a.date)); }
-      else if (state.active === 'best') { list = list.filter(x => x.rating >= 4.5).sort((a,b) => b.rating - a.rating || new Date(b.date) - new Date(a.date)); }
-      else { list.sort((a,b) => new Date(b.date) - new Date(a.date)); }
-      state.view = list; render();
-    }
-
-    function setActiveButton(key) { el.buttons.forEach(btn => btn.classList.toggle('is-active', btn.dataset.filter === key)); }
-
-    async function boot() {
-      try {
-        const res = await fetch('data/gallery.json', { cache: 'no-store' });
-        if (!res.ok) throw new Error('Failed to fetch gallery data');
-        const data = await res.json(); state.raw = Array.isArray(data) ? data : [];
-        state.active = 'all'; applyFilters();
-
-        // populate hero small tiles from first items (graceful fallback)
-        const leftTop = document.getElementById('hero-left-top');
-        const leftBottom = document.getElementById('hero-left-bottom');
-        const rightTop = document.getElementById('hero-right-top');
-        const rightBottom = document.getElementById('hero-right-bottom');
-        if (state.raw.length) {
-          const picks = state.raw.slice(0,6);
-          if (picks[0]) leftTop.querySelector('img').src = picks[0].url;
-          if (picks[1]) leftBottom.querySelector('img').src = picks[1].url;
-          if (picks[2]) rightTop.querySelector('img').src = picks[2].url;
-          if (picks[3]) rightBottom.querySelector('img').src = picks[3].url;
-        }
-
-      } catch (err) { console.error(err); el.collage.innerHTML = '<p>Unable to load gallery at this time.</p>'; }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      el.buttons = Array.from(document.querySelectorAll('.filter-button'));
-      el.buttons.forEach(btn => btn.addEventListener('click', () => { state.active = btn.dataset.filter; setActiveButton(state.active); applyFilters(); }));
-      el.search.addEventListener('input', (e) => { state.q = e.target.value; applyFilters(); });
-      document.getElementById('browseBtn').addEventListener('click', () => { window.scrollTo({ top: document.querySelector('.collage-wrap').offsetTop - 40, behavior: 'smooth' }); });
-      boot();
-    });
+    const state={raw:[],view:[],active:'all',q:''};const el={collage:document.getElementById('collage'),counter:document.getElementById('counter'),search:document.getElementById('searchInput'),buttons:[]};
+    function fmtDate(iso){const d=new Date(iso);return d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'2-digit'});}function render(){el.collage.innerHTML=state.view.map(item=>`\n        <figure class="tile-card" data-id="${item.id}">\n          <img class="tile-media" loading="lazy" src="${item.url}" alt="${item.alt}" />\n          <figcaption class="tile-overlay">\n            <div>\n              <p class="tile-title">${item.title}</p>\n              <p class="tile-meta">${fmtDate(item.date)} • ⭐ ${item.rating.toFixed(1)}</p>\n            </div>\n            <div class="tile-meta">${item.tags.slice(0,3).join(', ')}</div>\n          </figcaption>\n        </figure>\n      `).join('');el.counter.textContent=`${state.view.length} items`;}function applyFilters(){const q=state.q.trim().toLowerCase();let list=[...state.raw];if(q){list=list.filter(x=>x.title.toLowerCase().includes(q)||x.tags.some(t=>t.toLowerCase().includes(q)));}if(state.active==='recent'){list.sort((a,b)=>new Date(b.date)-new Date(a.date));}else if(state.active==='best'){list=list.filter(x=>x.rating>=4.5).sort((a,b)=>b.rating-a.rating||new Date(b.date)-new Date(a.date));}else{list.sort((a,b)=>new Date(b.date)-new Date(a.date));}state.view=list;render();}function setActiveButton(key){el.buttons.forEach(btn=>btn.classList.toggle('is-active',btn.dataset.filter===key));}async function boot(){try{const res=await fetch('data/gallery.json',{cache:'no-store'});if(!res.ok)throw new Error('Failed to fetch');const data=await res.json();state.raw=Array.isArray(data)?data:[];state.active='all';applyFilters();const leftTop=document.getElementById('hero-left-top');const leftBottom=document.getElementById('hero-left-bottom');const rightTop=document.getElementById('hero-right-top');const rightBottom=document.getElementById('hero-right-bottom');if(state.raw.length){const picks=state.raw.slice(0,6);if(picks[0])leftTop.querySelector('img').src=picks[0].url;if(picks[1])leftBottom.querySelector('img').src=picks[1].url;if(picks[2])rightTop.querySelector('img').src=picks[2].url;if(picks[3])rightBottom.querySelector('img').src=picks[3].url;}}catch(err){console.error(err);el.collage.innerHTML='<p>Unable to load gallery at this time.</p>'}}document.addEventListener('DOMContentLoaded',()=>{el.buttons=Array.from(document.querySelectorAll('.filter-button'));el.buttons.forEach(btn=>btn.addEventListener('click',()=>{state.active=btn.dataset.filter;setActiveButton(state.active);applyFilters();}));el.search.addEventListener('input',(e)=>{state.q=e.target.value;applyFilters();});document.getElementById('browseBtn').addEventListener('click',()=>{window.scrollTo({top:document.querySelector('.collage-wrap').offsetTop-40,behavior:'smooth'})});boot();});
   </script>
 </body>
 </html>
