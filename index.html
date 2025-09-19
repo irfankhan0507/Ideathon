@@ -254,6 +254,51 @@ k.m<!DOCTYPE html>
       });
     }
 
+    function updateNewspaperSlider() {
+      if (state.layout !== 'newspaper' || !els.collage) return;
+      // remove existing slider if present
+      const existing = document.getElementById('newsSlider');
+      if (existing) existing.remove();
+      const featured = state.view.slice(0, Math.min(6, state.view.length));
+      if (!featured.length) return;
+      const sliderHTML = `
+        <div class="news-slider" id="newsSlider">
+          <div class="news-slider-track" id="newsSliderTrack">
+            ${featured.map((it, i) => `
+              <div class="news-slide" data-idx="${i}">
+                <div class="news-image"><img src="${it.url}" alt="${it.alt}" loading="lazy"/></div>
+                <h4 class="news-title" style="margin:8px 0 6px">${it.title}</h4>
+                <div class="news-meta">${fmtDate(it.date)} • ⭐ ${it.rating.toFixed(1)}</div>
+              </div>
+            `).join('')}
+          </div>
+          <div class="news-slider-nav" style="left:8px"><button class="btn" id="newsPrev">‹</button></div>
+          <div class="news-slider-nav" style="right:8px"><button class="btn" id="newsNext">›</button></div>
+          <div class="news-slider-dots" id="newsSliderDots">${featured.map((_,i)=>`<button class="news-dot ${i===0? 'is-active':''}" data-dot="${i}"></button>`).join('')}</div>
+        </div>
+      `;
+      els.collage.insertAdjacentHTML('afterbegin', sliderHTML);
+      try {
+        if (window.newsSliderTimer) { clearInterval(window.newsSliderTimer); window.newsSliderTimer = null; }
+        const track = document.getElementById('newsSliderTrack');
+        const slidesEls = track ? Array.from(track.children) : [];
+        const prev = document.getElementById('newsPrev');
+        const next = document.getElementById('newsNext');
+        const dots = document.getElementById('newsSliderDots');
+        let sidx = 0;
+        function show(i){ if(!track) return; sidx = (i + slidesEls.length) % slidesEls.length; const shift = sidx * (100 / slidesEls.length); track.style.transform = `translateX(-${shift}%)`; Array.from(dots.children).forEach((d,j)=>d.classList.toggle('is-active', j===sidx)); }
+        function nextFn(){ show(sidx+1); }
+        function prevFn(){ show(sidx-1); }
+        next && next.addEventListener('click', ()=>{ nextFn(); resetNewsTimer(); });
+        prev && prev.addEventListener('click', ()=>{ prevFn(); resetNewsTimer(); });
+        if (dots) Array.from(dots.children).forEach(d => d.addEventListener('click', (e)=>{ const di = Number(e.target.dataset.dot); show(di); resetNewsTimer(); }));
+        function resetNewsTimer(){ if(window.newsSliderTimer) clearInterval(window.newsSliderTimer); window.newsSliderTimer = setInterval(()=>{ nextFn(); }, 3000); }
+        if (slidesEls.length){ slidesEls.forEach(el => el.style.flex = `0 0 ${100/slidesEls.length}%`); track.style.width = `${slidesEls.length * 100}%`; }
+        const sliderRoot = document.getElementById('newsSlider'); if (sliderRoot){ sliderRoot.addEventListener('mouseenter', ()=>{ if(window.newsSliderTimer) clearInterval(window.newsSliderTimer); }); sliderRoot.addEventListener('mouseleave', ()=>{ resetNewsTimer(); }); }
+        show(0); resetNewsTimer();
+      } catch (e) { console.error('slider init', e); }
+    }
+
     function applyFilters() {
       const q = state.q.trim().toLowerCase();
       let list = [...state.raw];
@@ -263,6 +308,7 @@ k.m<!DOCTYPE html>
       else { list.sort((a,b) => new Date(b.date) - new Date(a.date)); }
       state.view = list;
       render();
+      if (state.layout === 'newspaper' && typeof updateNewspaperSlider === 'function') updateNewspaperSlider();
     }
 
     function setActiveButton(key) { els.buttons.forEach(btn => btn.classList.toggle('is-active', btn.dataset.filter === key)); }
