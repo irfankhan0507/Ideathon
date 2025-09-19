@@ -275,7 +275,7 @@ k.m<!DOCTYPE html>
         <div class="news-slider" id="newsSlider">
           <div class="news-slider-track" id="newsSliderTrack">
             ${featured.map((it, i) => `
-              <div class="news-slide" data-idx="${i}">
+              <div class="news-slide" data-index="${i}">
                 <div class="news-image"><img src="${it.url}" alt="${it.alt}" loading="lazy"/></div>
                 <h4 class="news-title" style="margin:8px 0 6px">${it.title}</h4>
                 <div class="news-meta">${fmtDate(it.date)} • ⭐ ${it.rating.toFixed(1)}</div>
