@@ -258,7 +258,8 @@ k.m<!DOCTYPE html>
       els.counter.textContent = `${state.view.length} items`;
 
       // Attach click handlers to open lightbox (both types)
-      document.querySelectorAll('.tile-card, .news-card').forEach((card, idx) => {
+      Array.from(document.querySelectorAll('.tile-card, .news-card, .news-slide')).forEach((card) => {
+        const idx = Number(card.dataset.index ?? card.dataset.idx ?? Array.from(document.querySelectorAll('.tile-card, .news-card, .news-slide')).indexOf(card));
         card.addEventListener('click', () => openLightbox(idx));
         card.addEventListener('keydown', (e) => { if (e.key === 'Enter') openLightbox(idx); });
       });
