@@ -36,7 +36,11 @@ k.m<!DOCTYPE html>
     .nav-logo{width:48px;height:48px;border-radius:10px;object-fit:contain;display:block}
     /* ensure small logo container for visual balance */
     #siteLogo{display:block;margin-left:4px}
-    .search-wrapper{display:flex;align-items:center;background:#f4f6fa;border-radius:28px;padding:8px 12px;gap:8px;border:1px solid #eef4fb;min-width:220px;height:44px}
+    .search-wrapper{display:flex;align-items:center;background:#f4f6fa;border-radius:28px;padding:6px 12px;gap:8px;border:1px solid #eef4fb;min-width:220px;height:44px}
+    .search-icon{width:20px;height:20px;flex:0 0 20px;stroke:var(--muted);opacity:0.95}
+    .search-wrapper svg{display:block}
+    /* adjust input to take remaining space */
+    .search-wrapper input{flex:1;min-width:120px}
     .search-wrapper input{border:0;background:transparent;outline:none;font-size:0.95rem;color:#222;height:100%;width:260px}
     .nav-center{display:flex;flex-direction:column;align-items:center;gap:2px;justify-content:center}
     .brand-title{margin:0;font-size:1.05rem;color:var(--dark);font-weight:700;line-height:1}
