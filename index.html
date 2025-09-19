@@ -77,6 +77,16 @@ k.m<!DOCTYPE html>
     .tile-overlay{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%);color:#fff;padding:12px;display:flex;align-items:center;justify-content:space-between}
     .tile-title{font-weight:700;margin:0;font-size:0.95rem}
     .tile-meta{font-size:0.8rem;opacity:0.95}
+    /* Newspaper slider styles */
+    .news-slider{position:relative;margin-bottom:18px;overflow:hidden;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.96), rgba(250,250,250,0.96));padding:8px}
+    .news-slider-track{display:flex;transition:transform 0.45s ease}
+    .news-slide{flex:0 0 33.3333%;box-sizing:border-box;padding:12px}
+    .news-slide .news-image img{height:120px;object-fit:cover;border-radius:6px}
+    .news-slider-nav{position:absolute;top:50%;transform:translateY(-50%);display:flex;gap:8px}
+    .news-slider-nav .btn{background:rgba(0,0,0,0.6);color:#fff;border:0;padding:6px 8px;border-radius:6px;cursor:pointer}
+    .news-slider-dots{position:absolute;right:8px;top:8px;display:flex;gap:6px}
+    .news-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.6);border:0}
+    .news-dot.is-active{background:var(--brand-blue)}
 
     /* Newspaper view styles */
     .view-button{padding:8px 12px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);background:transparent;cursor:pointer;font-weight:700}
