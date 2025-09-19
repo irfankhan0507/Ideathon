@@ -78,6 +78,20 @@ k.m<!DOCTYPE html>
     .tile-title{font-weight:700;margin:0;font-size:0.95rem}
     .tile-meta{font-size:0.8rem;opacity:0.95}
 
+    /* Newspaper view styles */
+    .view-button{padding:8px 12px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);background:transparent;cursor:pointer;font-weight:700}
+    .view-button.is-active{background:var(--brand-blue);color:#fff}
+    .newspaper-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .news-card{display:flex;gap:12px;padding:14px;border-radius:10px;background:var(--white);box-shadow:0 8px 16px rgba(2,6,23,0.04);align-items:flex-start}
+    .news-image{flex:0 0 40%;max-width:40%}
+    .news-image img{width:100%;height:120px;object-fit:cover;border-radius:8px}
+    .news-body{flex:1}
+    .news-title{margin:0 0 6px;font-size:1.05rem;color:var(--dark)}
+    .news-meta{font-size:0.85rem;color:var(--muted);margin-bottom:8px}
+    .news-excerpt{margin:0;color:#374151}
+
+    @media (max-width:1024px){.newspaper-grid{grid-template-columns:1fr} .news-image img{height:100px}}
+
     /* FOOTER */
     .footer-bar{padding:12px 20px 20px;color:var(--dark);font-size:0.95rem;display:flex;align-items:center;justify-content:space-between;background:var(--footer-bg)}
     .counter-pill{background:var(--white);color:var(--dark);padding:8px 12px;border-radius:999px;font-weight:600;border:1px solid rgba(2,6,23,0.06)}
@@ -164,10 +178,16 @@ k.m<!DOCTYPE html>
       </div>
 
       <div class="filter-strip">
-        <div class="filters">
-          <button class="filter-button is-active" data-filter="all">All</button>
-          <button class="filter-button" data-filter="recent">Recent</button>
-          <button class="filter-button" data-filter="best">Best</button>
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <div class="filters">
+            <button class="filter-button is-active" data-filter="all">All</button>
+            <button class="filter-button" data-filter="recent">Recent</button>
+            <button class="filter-button" data-filter="best">Best</button>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;margin-left:8px">
+            <button class="view-button is-active" data-view="collage" aria-pressed="true">Gallery</button>
+            <button class="view-button" data-view="newspaper" aria-pressed="false">Newspaper</button>
+          </div>
         </div>
         <input type="search" class="search-field" id="searchInput" placeholder="Search tags (e.g. refinery, robots)" aria-label="Search tags" />
       </div>
@@ -202,7 +222,7 @@ k.m<!DOCTYPE html>
   </div>
 
   <script>
-    const state = { raw: [], view: [], active: 'all', q: '' };
+    const state = { raw: [], view: [], active: 'all', q: '', layout: 'collage' };
     window.state = state;
     const els = {
       collage: document.getElementById('collage'),
@@ -216,11 +236,19 @@ k.m<!DOCTYPE html>
     function fmtDate(iso) { const d = new Date(iso); return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: '2-digit' }); }
 
     function render() {
-      els.collage.innerHTML = state.view.map(item => `\n        <figure class="tile-card" data-id="${item.id}" tabindex="0">\n          <img class="tile-media" loading="lazy" src="${item.url}" alt="${item.alt}" />\n          <figcaption class="tile-overlay">\n            <div>\n              <p class="tile-title">${item.title}</p>\n              <p class="tile-meta">${fmtDate(item.date)} • ⭐ ${item.rating.toFixed(1)}</p>\n            </div>\n            <div class="tile-meta">${item.tags.slice(0,3).join(', ')}</div>\n          </figcaption>\n        </figure>\n      `).join('');
+      if (!els.collage) return;
+      if (state.layout === 'newspaper') {
+        els.collage.classList.add('newspaper-grid');
+        els.collage.innerHTML = state.view.map((item, idx) => `\n          <article class="news-card" data-index="${idx}" data-id="${item.id}" tabindex="0">\n            <div class="news-image"><img src="${item.url}" alt="${item.alt}" loading="lazy" /></div>\n            <div class="news-body">\n              <h4 class="news-title">${item.title}</h4>\n              <div class="news-meta">${fmtDate(item.date)} • ⭐ ${item.rating.toFixed(1)}</div>\n              <p class="news-excerpt">${item.tags.slice(0,4).join(', ')}</p>\n            </div>\n          </article>\n        `).join('');
+      } else {
+        els.collage.classList.remove('newspaper-grid');
+        els.collage.innerHTML = state.view.map(item => `\n          <figure class="tile-card" data-id="${item.id}" tabindex="0">\n            <img class="tile-media" loading="lazy" src="${item.url}" alt="${item.alt}" />\n            <figcaption class="tile-overlay">\n              <div>\n                <p class="tile-title">${item.title}</p>\n                <p class="tile-meta">${fmtDate(item.date)} • ⭐ ${item.rating.toFixed(1)}</p>\n              </div>\n              <div class="tile-meta">${item.tags.slice(0,3).join(', ')}</div>\n            </figcaption>\n          </figure>\n        `).join('');
+      }
+
       els.counter.textContent = `${state.view.length} items`;
 
-      // Attach click handlers to open lightbox
-      document.querySelectorAll('.tile-card').forEach((card, idx) => {
+      // Attach click handlers to open lightbox (both types)
+      document.querySelectorAll('.tile-card, .news-card').forEach((card, idx) => {
         card.addEventListener('click', () => openLightbox(idx));
         card.addEventListener('keydown', (e) => { if (e.key === 'Enter') openLightbox(idx); });
       });
@@ -294,6 +322,10 @@ k.m<!DOCTYPE html>
     document.addEventListener('DOMContentLoaded', () => {
       els.buttons = Array.from(document.querySelectorAll('.filter-button'));
       els.buttons.forEach(btn => btn.addEventListener('click', () => { state.active = btn.dataset.filter; setActiveButton(state.active); applyFilters(); }));
+
+      // view buttons (gallery / newspaper)
+      els.viewButtons = Array.from(document.querySelectorAll('.view-button'));
+      els.viewButtons.forEach(vb => vb.addEventListener('click', () => { const view = vb.dataset.view; state.layout = view; els.viewButtons.forEach(x => x.classList.toggle('is-active', x.dataset.view === view)); els.viewButtons.forEach(x => x.setAttribute('aria-pressed', x.dataset.view === view)); render(); }));
 
       // wire search inputs
       if (els.search) els.search.addEventListener('input', (e) => { state.q = e.target.value; applyFilters(); });
