@@ -73,7 +73,8 @@ k.m<!DOCTYPE html>
     /* COLLAGE / GALLERY */
     .collage-wrap{padding:6px 20px 24px}
     .collage{column-count:3;column-gap:16px}
-    .tile-card{display:inline-block;width:100%;margin:0 0 16px;border-radius:12px;overflow:hidden;background:#ecf0f1;position:relative;box-shadow:0 6px 16px rgba(0,0,0,0.06);break-inside:avoid}
+    .tile-card{display:inline-block;width:100%;margin:0 0 18px;border-radius:12px;overflow:hidden;background:var(--white);position:relative;box-shadow:var(--shadow);break-inside:avoid;transition:transform .28s ease, box-shadow .28s ease}
+    .tile-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(2,6,23,0.12)}
     .tile-media{width:100%;display:block}
     .tile-overlay{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%);color:#fff;padding:12px;display:flex;align-items:center;justify-content:space-between}
     .tile-title{font-weight:700;margin:0;font-size:0.95rem}
