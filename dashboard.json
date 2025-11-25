@@ -11,7 +11,38 @@
     "email": "careers@techcorp.com",
     "tags": ["Full Stack", "Web Dev", "Cloud"],
     "rating": 4.8,
-    "posted": "2025-09-01T10:00:00Z"
+    "posted": "2025-09-01T10:00:00Z",
+    "founder": "John Smith",
+    "category_business": "Technology & Software Development",
+    "website": "https://techcorp.example.com",
+    "phone": "+1 (650) 555-0100",
+    "overview": "TechCorp Solutions is a leading software development company specializing in cloud infrastructure and web technologies. We empower businesses with innovative digital solutions.",
+    "products": ["Web Development", "Cloud Services", "DevOps Solutions", "Mobile Apps"],
+    "operatingRegion": "Silicon Valley, California",
+    "jobRole": "Full Stack Software Engineer Intern",
+    "requirements": [
+      "Currently pursuing degree in Computer Science or related field",
+      "Strong knowledge of JavaScript, React, and Node.js",
+      "Understanding of REST APIs and databases",
+      "Good problem-solving and communication skills",
+      "Experience with Git and version control",
+      "Passion for learning new technologies"
+    ],
+    "responsibilities": [
+      "Develop and maintain web applications using React and Node.js",
+      "Collaborate with senior engineers on cloud infrastructure projects",
+      "Participate in code reviews and contribute to team improvements",
+      "Write clean, maintainable code following best practices",
+      "Assist in debugging and optimizing application performance"
+    ],
+    "salary": "$20-25/hour",
+    "duration": "3-6 months",
+    "galleryImages": [
+      "https://images.pexels.com/photos/3182794/pexels-photo-3182794.jpeg",
+      "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg",
+      "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
+      "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg"
+    ]
   },
   {
     "id": "int02",
@@ -25,7 +56,38 @@
     "email": "internships@dataflow.com",
     "tags": ["ML", "Python", "Data"],
     "rating": 4.6,
-    "posted": "2025-09-02T09:30:00Z"
+    "posted": "2025-09-02T09:30:00Z",
+    "founder": "Sarah Johnson",
+    "category_business": "Data Science & Analytics",
+    "website": "https://dataflow.example.com",
+    "phone": "+1 (212) 555-0200",
+    "overview": "DataFlow Analytics transforms raw data into actionable insights using cutting-edge machine learning and visualization techniques. We serve Fortune 500 companies across industries.",
+    "products": ["ML Models", "Data Visualization", "Business Intelligence", "Predictive Analytics"],
+    "operatingRegion": "New York, New York",
+    "jobRole": "Data Science Intern",
+    "requirements": [
+      "Pursuing degree in Statistics, Computer Science, or Mathematics",
+      "Proficiency in Python and SQL",
+      "Understanding of machine learning algorithms",
+      "Experience with data visualization libraries (Matplotlib, Plotly)",
+      "Strong analytical and statistical knowledge",
+      "Excellent communication skills"
+    ],
+    "responsibilities": [
+      "Develop and train machine learning models on real-world datasets",
+      "Create data visualizations and dashboards for stakeholders",
+      "Perform exploratory data analysis on large datasets",
+      "Assist in data cleaning and preprocessing",
+      "Collaborate with data engineers on pipeline optimization"
+    ],
+    "salary": "$22-27/hour",
+    "duration": "3-6 months",
+    "galleryImages": [
+      "https://images.pexels.com/photos/3182810/pexels-photo-3182810.jpeg",
+      "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg",
+      "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
+      "https://images.pexels.com/photos/3182794/pexels-photo-3182794.jpeg"
+    ]
   },
   {
     "id": "work01",
@@ -39,7 +101,40 @@
     "email": "jobs@cloudscale.com",
     "tags": ["Senior", "DevOps", "Leadership"],
     "rating": 4.7,
-    "posted": "2025-08-28T14:15:00Z"
+    "posted": "2025-08-28T14:15:00Z",
+    "founder": "Michael Chen",
+    "category_business": "Cloud Infrastructure & Enterprise Solutions",
+    "website": "https://cloudscale.example.com",
+    "phone": "+1 (206) 555-0300",
+    "overview": "CloudScale Industries is a pioneering cloud infrastructure company serving enterprise clients globally. We build scalable, secure, and reliable cloud solutions.",
+    "products": ["Cloud Infrastructure", "Kubernetes Solutions", "Container Orchestration", "Monitoring Tools"],
+    "operatingRegion": "Seattle, Washington",
+    "jobRole": "Senior Software Engineer - Cloud Infrastructure",
+    "requirements": [
+      "8+ years of software development experience",
+      "Expert-level knowledge of cloud platforms (AWS, Azure, GCP)",
+      "Strong experience with Kubernetes and container technologies",
+      "Proficiency in Go or Rust programming languages",
+      "Proven leadership and team management skills",
+      "BS/MS in Computer Science or equivalent experience",
+      "Excellent system design and architecture skills"
+    ],
+    "responsibilities": [
+      "Lead a team of 5-7 engineers in developing cloud infrastructure",
+      "Design and architect large-scale distributed systems",
+      "Mentor junior engineers and conduct code reviews",
+      "Collaborate with product and infrastructure teams on roadmap",
+      "Drive technical excellence and best practices",
+      "Communicate technical concepts to stakeholders"
+    ],
+    "salary": "$180,000-220,000/year",
+    "duration": "Full-time, permanent",
+    "galleryImages": [
+      "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg",
+      "https://images.pexels.com/photos/3182794/pexels-photo-3182794.jpeg",
+      "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
+      "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg"
+    ]
   },
   {
     "id": "int03",
@@ -53,7 +148,39 @@
     "email": "design@designstudio.com",
     "tags": ["Design", "UI/UX", "Figma"],
     "rating": 4.5,
-    "posted": "2025-09-03T11:00:00Z"
+    "posted": "2025-09-03T11:00:00Z",
+    "founder": "Emma Williams",
+    "category_business": "Design & User Experience",
+    "website": "https://designstudio.example.com",
+    "phone": "+1 (323) 555-0400",
+    "overview": "DesignStudio Pro creates beautiful, intuitive digital experiences for mobile and web applications. We combine creativity with user research to build world-class products.",
+    "products": ["UI/UX Design", "Mobile Apps", "Web Design", "Design Systems"],
+    "operatingRegion": "Los Angeles, California",
+    "jobRole": "UX/UI Design Intern",
+    "requirements": [
+      "Pursuing degree in Design, Computer Science, or related field",
+      "Proficiency in Figma, Adobe XD, or Sketch",
+      "Understanding of UX/UI principles and best practices",
+      "Strong portfolio of design projects",
+      "Excellent attention to detail and visual design skills",
+      "Communication and collaboration abilities"
+    ],
+    "responsibilities": [
+      "Design user interfaces and user experiences for mobile applications",
+      "Create wireframes, mockups, and prototypes",
+      "Conduct user research and usability testing",
+      "Collaborate with product and engineering teams",
+      "Maintain and improve design systems",
+      "Iterate on designs based on feedback and user data"
+    ],
+    "salary": "$18-22/hour",
+    "duration": "3-6 months",
+    "galleryImages": [
+      "https://images.pexels.com/photos/3183151/pexels-photo-3183151.jpeg",
+      "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
+      "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg",
+      "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg"
+    ]
   },
   {
     "id": "work02",
@@ -67,7 +194,40 @@
     "email": "careers@financehub.com",
     "tags": ["Analytics", "Finance", "Excel"],
     "rating": 4.4,
-    "posted": "2025-08-25T16:45:00Z"
+    "posted": "2025-08-25T16:45:00Z",
+    "founder": "Robert Thompson",
+    "category_business": "Financial Services & Analytics",
+    "website": "https://financehub.example.com",
+    "phone": "+1 (617) 555-0500",
+    "overview": "FinanceHub Corp provides comprehensive financial analytics and business intelligence solutions to investment firms and corporations worldwide.",
+    "products": ["Financial Analytics", "Risk Management", "Portfolio Analysis", "Market Intelligence"],
+    "operatingRegion": "Boston, Massachusetts",
+    "jobRole": "Senior Financial Analyst",
+    "requirements": [
+      "Bachelor's degree in Finance, Accounting, Economics, or MBA",
+      "5+ years of financial analysis experience",
+      "Expert-level Excel skills and SQL knowledge",
+      "Experience with financial modeling and forecasting",
+      "Strong knowledge of financial markets and instruments",
+      "Excellent communication and presentation skills",
+      "CFA or similar credential preferred"
+    ],
+    "responsibilities": [
+      "Conduct financial analysis and market research",
+      "Develop financial models and forecasting tools",
+      "Present findings and recommendations to senior management",
+      "Monitor market trends and economic indicators",
+      "Prepare reports and dashboards for stakeholders",
+      "Mentor junior analysts and support team projects"
+    ],
+    "salary": "$110,000-150,000/year",
+    "duration": "Full-time, permanent",
+    "galleryImages": [
+      "https://images.pexels.com/photos/3182749/pexels-photo-3182749.jpeg",
+      "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
+      "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg",
+      "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg"
+    ]
   },
   {
     "id": "int04",
@@ -81,7 +241,39 @@
     "email": "intern@greenenergy.com",
     "tags": ["Engineering", "Green", "Research"],
     "rating": 4.9,
-    "posted": "2025-09-04T08:20:00Z"
+    "posted": "2025-09-04T08:20:00Z",
+    "founder": "Dr. Lisa Green",
+    "category_business": "Renewable Energy & Sustainability",
+    "website": "https://greenenergy.example.com",
+    "phone": "+1 (720) 555-0600",
+    "overview": "Green Energy Labs is a research-focused organization dedicated to developing sustainable energy solutions and advancing renewable technology.",
+    "products": ["Solar Solutions", "Wind Turbines", "Energy Storage", "Sustainability Consulting"],
+    "operatingRegion": "Boulder, Colorado",
+    "jobRole": "Environmental Engineering Intern",
+    "requirements": [
+      "Currently pursuing degree in Environmental Engineering or related field",
+      "Knowledge of renewable energy systems and technologies",
+      "Basic understanding of environmental regulations",
+      "Strong analytical and problem-solving skills",
+      "Experience with AutoCAD or similar design tools",
+      "Passion for sustainability and environmental protection"
+    ],
+    "responsibilities": [
+      "Assist in design and testing of renewable energy systems",
+      "Conduct environmental impact assessments",
+      "Perform field research and data collection",
+      "Support technical writing and documentation",
+      "Collaborate on sustainability projects and initiatives",
+      "Help optimize energy efficiency solutions"
+    ],
+    "salary": "$18-23/hour",
+    "duration": "3-6 months",
+    "galleryImages": [
+      "https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg",
+      "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
+      "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg",
+      "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg"
+    ]
   },
   {
     "id": "work03",
@@ -95,7 +287,40 @@
     "email": "engineering@meditech.com",
     "tags": ["Healthcare", "Medical", "R&D"],
     "rating": 4.8,
-    "posted": "2025-08-20T13:00:00Z"
+    "posted": "2025-08-20T13:00:00Z",
+    "founder": "Dr. James Martinez",
+    "category_business": "Medical Technology & Healthcare",
+    "website": "https://meditech.example.com",
+    "phone": "+1 (415) 555-0700",
+    "overview": "MediTech Innovations is at the forefront of medical device development, creating life-saving technologies that improve patient outcomes globally.",
+    "products": ["Medical Devices", "Diagnostic Tools", "Surgical Equipment", "Patient Monitoring Systems"],
+    "operatingRegion": "San Francisco, California",
+    "jobRole": "Senior Medical Device Engineer",
+    "requirements": [
+      "BS/MS in Biomedical Engineering or related field",
+      "7+ years of medical device development experience",
+      "Knowledge of FDA regulations and compliance",
+      "Proficiency in CAD software and simulation tools",
+      "Strong project management and leadership skills",
+      "Experience with product lifecycle management",
+      "Excellent problem-solving and innovation mindset"
+    ],
+    "responsibilities": [
+      "Lead development of new medical devices from concept to commercialization",
+      "Ensure compliance with FDA and international regulations",
+      "Manage cross-functional teams and timelines",
+      "Conduct technical reviews and design validations",
+      "Collaborate with clinical partners on user feedback",
+      "Document and present technical findings"
+    ],
+    "salary": "$160,000-200,000/year",
+    "duration": "Full-time, permanent",
+    "galleryImages": [
+      "https://images.pexels.com/photos/3768126/pexels-photo-3768126.jpeg",
+      "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
+      "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg",
+      "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg"
+    ]
   },
   {
     "id": "int05",
@@ -109,7 +334,39 @@
     "email": "interns@marketingpro.com",
     "tags": ["Marketing", "Social", "Content"],
     "rating": 4.3,
-    "posted": "2025-09-05T10:30:00Z"
+    "posted": "2025-09-05T10:30:00Z",
+    "founder": "Amanda Rodriguez",
+    "category_business": "Digital Marketing & Advertising",
+    "website": "https://marketingpro.example.com",
+    "phone": "+1 (312) 555-0800",
+    "overview": "MarketingPro Agency is a full-service digital marketing firm helping brands achieve their marketing goals through innovative strategies and creative campaigns.",
+    "products": ["Social Media Management", "Content Marketing", "SEO/SEM", "Digital Advertising"],
+    "operatingRegion": "Chicago, Illinois",
+    "jobRole": "Digital Marketing Intern",
+    "requirements": [
+      "Currently pursuing degree in Marketing, Communications, or Business",
+      "Knowledge of social media platforms and analytics tools",
+      "Strong writing and content creation skills",
+      "Familiarity with SEO and digital marketing concepts",
+      "Creativity and strong visual design sense",
+      "Ability to work in a fast-paced environment"
+    ],
+    "responsibilities": [
+      "Create and manage social media content across platforms",
+      "Develop content calendars and marketing strategies",
+      "Analyze social media metrics and campaign performance",
+      "Assist in SEO optimization and keyword research",
+      "Collaborate with creative team on campaigns",
+      "Support email marketing and digital advertising efforts"
+    ],
+    "salary": "$17-21/hour",
+    "duration": "3-6 months",
+    "galleryImages": [
+      "https://images.pexels.com/photos/3182746/pexels-photo-3182746.jpeg",
+      "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
+      "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg",
+      "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg"
+    ]
   },
   {
     "id": "work04",
@@ -123,6 +380,39 @@
     "email": "jobs@retaildynamics.com",
     "tags": ["Management", "Retail", "Operations"],
     "rating": 4.5,
-    "posted": "2025-08-18T15:25:00Z"
+    "posted": "2025-08-18T15:25:00Z",
+    "founder": "David Brown",
+    "category_business": "Retail & Operations Management",
+    "website": "https://retaildynamics.example.com",
+    "phone": "+1 (305) 555-0900",
+    "overview": "RetailDynamics Inc operates a network of successful retail stores delivering exceptional customer service and operational excellence.",
+    "products": ["Retail Services", "Inventory Management", "Customer Experience", "Supply Chain"],
+    "operatingRegion": "Miami, Florida",
+    "jobRole": "Regional Operations Manager",
+    "requirements": [
+      "Bachelor's degree in Business, Management, or related field",
+      "6+ years of retail management experience",
+      "Proven track record of managing multiple locations",
+      "Strong leadership and team building skills",
+      "Experience with inventory management systems",
+      "Excellent analytical and financial acumen",
+      "Customer service excellence mindset"
+    ],
+    "responsibilities": [
+      "Oversee operations across multiple retail locations",
+      "Manage budgets and improve operational efficiency",
+      "Lead and develop high-performing teams",
+      "Ensure compliance with company policies and regulations",
+      "Monitor sales performance and customer satisfaction",
+      "Drive continuous improvement initiatives"
+    ],
+    "salary": "$85,000-120,000/year",
+    "duration": "Full-time, permanent",
+    "galleryImages": [
+      "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
+      "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg",
+      "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg",
+      "https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg"
+    ]
   }
 ]
