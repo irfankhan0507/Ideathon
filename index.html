@@ -998,6 +998,14 @@
     </footer>
   </div>
 
+  <!-- Detail Modal -->
+  <div class="detail-modal" id="detailModal">
+    <div class="detail-container" id="detailContainer">
+      <button class="detail-close-btn" id="detailCloseBtn" aria-label="Close detail view">✕</button>
+      <div id="detailContent"></div>
+    </div>
+  </div>
+
   <script>
     // State management
     const state = {
@@ -1005,6 +1013,7 @@
       filteredData: [],
       activeFilter: 'all',
       searchQuery: '',
+      selectedItem: null,
     };
 
     const elements = {
