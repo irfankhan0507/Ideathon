@@ -1319,6 +1319,12 @@
       });
     }
 
+    // Close detail modal
+    function closeDetailView() {
+      elements.detailModal.classList.remove('is-open');
+      state.selectedItem = null;
+    }
+
     // Event listeners
     elements.filterButtons.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -1331,6 +1337,19 @@
     elements.searchInput.addEventListener('input', (e) => {
       state.searchQuery = e.target.value;
       applyFilters();
+    });
+
+    elements.detailCloseBtn.addEventListener('click', closeDetailView);
+    elements.detailModal.addEventListener('click', (e) => {
+      if (e.target === elements.detailModal) {
+        closeDetailView();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && elements.detailModal.classList.contains('is-open')) {
+        closeDetailView();
+      }
     });
 
     // Load data
