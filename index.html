@@ -41,45 +41,70 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-      background: linear-gradient(135deg, #f0f4f8 0%, #e8f1f9 50%, #f5e8ff 100%);
+      background: linear-gradient(180deg, #0f172a 0%, #1a2847 50%, #111827 100%);
       overflow: hidden;
+    }
+
+    .bg-container::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(90deg, rgba(30, 64, 175, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(30, 64, 175, 0.08) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: gridShift 20s linear infinite;
+    }
+
+    @keyframes gridShift {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    .bg-container::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(30, 64, 175, 0.15), transparent 50%),
+                  radial-gradient(ellipse at 80% 80%, rgba(220, 38, 38, 0.1), transparent 50%);
+      pointer-events: none;
     }
 
     .bg-shape {
       position: absolute;
-      opacity: 0.4;
-      filter: blur(60px);
+      opacity: 0.25;
+      filter: blur(80px);
     }
 
     .shape-1 {
-      width: 400px;
-      height: 400px;
+      width: 500px;
+      height: 500px;
       background: linear-gradient(135deg, #1E40AF, #3B82F6);
       border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-      top: -100px;
-      left: -150px;
-      animation: float 15s infinite ease-in-out;
+      top: -150px;
+      left: -200px;
+      animation: float 25s infinite ease-in-out;
     }
 
     .shape-2 {
-      width: 350px;
-      height: 350px;
-      background: linear-gradient(135deg, #DC2626, #EF4444);
+      width: 450px;
+      height: 450px;
+      background: linear-gradient(135deg, #DC2626, rgba(220, 38, 38, 0.6));
       border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-      bottom: -100px;
-      right: -100px;
-      animation: float 18s infinite ease-in-out reverse;
+      bottom: -150px;
+      right: -150px;
+      animation: float 28s infinite ease-in-out reverse;
       animation-delay: -2s;
     }
 
     .shape-3 {
-      width: 300px;
-      height: 300px;
-      background: linear-gradient(135deg, #F59E0B, #FBBF24);
+      width: 400px;
+      height: 400px;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.4), rgba(251, 191, 36, 0.2));
       border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-      top: 50%;
-      right: 10%;
-      animation: float 20s infinite ease-in-out;
+      top: 45%;
+      right: 5%;
+      animation: float 30s infinite ease-in-out;
       animation-delay: -4s;
     }
 
