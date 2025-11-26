@@ -984,11 +984,13 @@
   </style>
 </head>
 <body>
-  <!-- 3D Animated Background -->
+  <!-- Industrial Background Video -->
   <div class="bg-container">
-    <div class="shape-1"></div>
-    <div class="shape-2"></div>
-    <div class="shape-3"></div>
+    <video autoplay muted loop playsinline class="bg-video">
+      <source src="https://videos.pexels.com/video-files/4065343/4065343-hd_1920_1080_30fps.mp4" type="video/mp4">
+      <source src="https://videos.pexels.com/video-files/4065343/4065343-hd_1280_720_25fps.mp4" type="video/mp4">
+    </video>
+    <div class="bg-overlay"></div>
     <div class="parallax-layer" id="parallaxLayer">
       <div class="particle"></div>
       <div class="particle"></div>
