@@ -223,19 +223,27 @@
     .header-search {
       display: flex;
       align-items: center;
-      background: #eff6ff;
+      background: rgba(30, 41, 59, 0.8);
       border-radius: 28px;
-      padding: 8px 16px;
+      padding: 10px 16px;
       gap: 10px;
-      border: 1px solid #dbeafe;
+      border: 1px solid rgba(30, 64, 175, 0.3);
       flex: 1;
       max-width: 400px;
+      transition: all 0.3s ease;
+    }
+
+    .header-search:hover,
+    .header-search:focus-within {
+      background: rgba(30, 41, 59, 0.95);
+      border-color: rgba(30, 64, 175, 0.6);
+      box-shadow: 0 0 12px rgba(30, 64, 175, 0.2);
     }
 
     .header-search svg {
       width: 20px;
       height: 20px;
-      stroke: var(--gray);
+      stroke: #94a3b8;
       flex-shrink: 0;
     }
 
@@ -246,11 +254,11 @@
       font-size: 14px;
       font-family: 'Poppins', sans-serif;
       flex: 1;
-      color: var(--dark);
+      color: var(--white);
     }
 
     .header-search input::placeholder {
-      color: var(--gray);
+      color: #64748b;
     }
 
     /* Main content area */
