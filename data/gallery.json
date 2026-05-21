@@ -1,0 +1,110 @@
+[
+  {
+    "id": "img01",
+    "title": "Metalwork Sparks",
+    "url": "https://images.pexels.com/photos/1145434/pexels-photo-1145434.jpeg",
+    "alt": "A worker operates a grinder cutting metal, creating a vibrant display of sparks in an industrial setting.",
+    "tags": ["factory", "metal", "grinding", "sparks"],
+    "rating": 4.7,
+    "date": "2025-08-02T10:15:00Z"
+  },
+  {
+    "id": "img02",
+    "title": "CNC Machinery",
+    "url": "https://images.pexels.com/photos/6890319/pexels-photo-6890319.jpeg",
+    "alt": "Large industrial machinery inside a modern manufacturing plant with natural lighting.",
+    "tags": ["manufacturing", "cnc", "automation"],
+    "rating": 4.5,
+    "date": "2025-07-20T12:00:00Z"
+  },
+  {
+    "id": "img03",
+    "title": "Warehouse Forklift",
+    "url": "https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg",
+    "alt": "A warehouse worker maneuvers a forklift to transport crates for brewing company storage.",
+    "tags": ["warehouse", "logistics", "forklift"],
+    "rating": 4.2,
+    "date": "2025-09-10T09:00:00Z"
+  },
+  {
+    "id": "img04",
+    "title": "Refinery at Night",
+    "url": "https://images.pexels.com/photos/236722/pexels-photo-236722.jpeg",
+    "alt": "Night view of a brightly lit industrial facility showcasing intricate steel structures and machinery.",
+    "tags": ["refinery", "night", "pipes"],
+    "rating": 4.6,
+    "date": "2025-09-05T21:30:00Z"
+  },
+  {
+    "id": "img05",
+    "title": "Forge Heat",
+    "url": "https://images.pexels.com/photos/5845937/pexels-photo-5845937.jpeg",
+    "alt": "A blacksmith heats metal in a forge, demonstrating traditional metalworking skills.",
+    "tags": ["forge", "metal", "heat"],
+    "rating": 4.3,
+    "date": "2025-06-18T15:45:00Z"
+  },
+  {
+    "id": "img06",
+    "title": "Cranes Skyline",
+    "url": "https://images.pexels.com/photos/219542/pexels-photo-219542.jpeg",
+    "alt": "Brightly colored construction cranes rise against a cloudy sky in Greater London.",
+    "tags": ["construction", "cranes", "urban"],
+    "rating": 4.0,
+    "date": "2025-05-26T08:20:00Z"
+  },
+  {
+    "id": "img07",
+    "title": "Robotic Assembly",
+    "url": "https://images.pexels.com/photos/19319639/pexels-photo-19319639.jpeg",
+    "alt": "A robotic dog oversees an automated car assembly in a high-tech factory setting.",
+    "tags": ["robotics", "automation", "assembly"],
+    "rating": 4.8,
+    "date": "2025-09-12T11:10:00Z"
+  },
+  {
+    "id": "img08",
+    "title": "Container Port",
+    "url": "https://images.pexels.com/photos/1117210/pexels-photo-1117210.jpeg",
+    "alt": "An Evergreen container ship loading at the Port of Baltimore during daytime.",
+    "tags": ["logistics", "port", "containers"],
+    "rating": 4.4,
+    "date": "2025-08-28T13:05:00Z"
+  },
+  {
+    "id": "img09",
+    "title": "Wind Turbines",
+    "url": "https://images.pexels.com/photos/1605270/pexels-photo-1605270.jpeg",
+    "alt": "High-angle shot of wind turbines casting shadows on farmland in Dodge Center, MN.",
+    "tags": ["energy", "turbines", "wind"],
+    "rating": 4.1,
+    "date": "2025-07-30T16:40:00Z"
+  },
+  {
+    "id": "img10",
+    "title": "Open Pit Mine",
+    "url": "https://images.pexels.com/photos/14484386/pexels-photo-14484386.jpeg",
+    "alt": "Yellow dump trucks and conveyor machinery in a sunny mining site with clear blue sky.",
+    "tags": ["mining", "trucks", "earthmoving"],
+    "rating": 4.6,
+    "date": "2025-04-09T10:00:00Z"
+  },
+  {
+    "id": "img11",
+    "title": "Chemical Plant",
+    "url": "https://images.pexels.com/photos/15970032/pexels-photo-15970032.jpeg",
+    "alt": "View of a large oil refinery plant with intricate pipelines in Trzebinia, Poland.",
+    "tags": ["chemicals", "refinery", "pipelines"],
+    "rating": 4.5,
+    "date": "2025-08-14T18:25:00Z"
+  },
+  {
+    "id": "img12",
+    "title": "Industrial Hall",
+    "url": "https://images.pexels.com/photos/3831826/pexels-photo-3831826.jpeg",
+    "alt": "Bright premise for storage with concrete floor and metal beams inside modern industrial building.",
+    "tags": ["plant", "hall", "steel"],
+    "rating": 4.2,
+    "date": "2025-03-22T09:35:00Z"
+  }
+]
